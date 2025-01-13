@@ -1,0 +1,15 @@
+{
+  "name": "@budget-tracker/utils",
+  "version": "1.0.0",
+  "type": "module",
+  "files": [
+    "./dist/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  }
+}
