@@ -5,8 +5,6 @@
     "incremental": true,
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo",
     "rootDir": "src",
-    "lib": [
-      "es2023"
-    ]
-  },
+    "lib": ["es2023"]
+  }
 }
