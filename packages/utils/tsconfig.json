@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "incremental": true,
-    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo",
+    "tsBuildInfoFile": "build-cache/tsconfig.tsbuildinfo",
     "rootDir": "src",
     "lib": ["es2023"]
   },
