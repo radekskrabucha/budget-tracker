@@ -5,7 +5,10 @@
     "incremental": true,
     "tsBuildInfoFile": "build-cache/tsconfig.tsbuildinfo",
     "rootDir": "src",
-    "lib": ["es2023"]
+    "lib": ["es2023"],
+    "paths": {
+      "~/*": ["./src/*"]
+    },
   },
   "exclude": [
     "eslint.config.js",
@@ -14,5 +17,8 @@
     "**/*.test.ts",
     "**/*.spec.ts",
     "tests/**/*"
-  ]
+  ],
+  "tsc-alias": {
+    "resolveFullPaths": true
+  }
 }
