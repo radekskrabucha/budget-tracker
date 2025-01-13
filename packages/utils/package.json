@@ -9,6 +9,8 @@
     "dev": "tsc --watch",
     "build": "tsc",
     "format": "prettier ./src --write",
+    "lint": "eslint \"src/**/*.+(ts|js|tsx|jsx)\"",
+    "lint:fix": "eslint \"src/**/*.+(ts|js|tsx|jsx)\" --fix",
     "type-check": "tsc --noEmit",
     "test": "vitest run"
   },
