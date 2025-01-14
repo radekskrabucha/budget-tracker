@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
+  "files": [
+    "./src/lib/client.ts"
+  ],
+  "exports": {
+    ".": "./src/lib/client.ts"
+  },
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc && tsc-alias",
