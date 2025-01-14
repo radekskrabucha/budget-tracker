@@ -19,6 +19,6 @@
     "hono": "4.6.16"
   },
   "devDependencies": {
-    "tsx": "4.7.1"
+    "tsx": "4.19.2"
   }
 }
