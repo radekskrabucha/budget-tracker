@@ -26,7 +26,10 @@ lerna-debug.log*
 
 # misc
 .DS_Store
-build-cache
 
 # build
 dist/
+*.tsbuildinfo
+
+# turbo
+.turbo
