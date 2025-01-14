@@ -2,6 +2,7 @@
   "name": "@budget-tracker/api",
   "version": "1.0.0",
   "type": "module",
+  "private": true,
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc && tsc-alias",
@@ -18,7 +19,6 @@
     "hono": "4.6.16"
   },
   "devDependencies": {
-    "@types/node": "20.11.17",
-    "tsx": "4.7.1"
+    "tsx": "4.19.2"
   }
 }
