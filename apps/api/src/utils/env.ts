@@ -13,7 +13,16 @@ const EnvSchema = z.object({
   NODE_ENV: z
     .enum(['development', 'production', 'test'])
     .default('development'),
-  PORT: z.coerce.number().default(4000)
+  PORT: z.coerce.number().default(4000),
+  LOG_LEVEL: z.enum([
+    'trace',
+    'debug',
+    'info',
+    'warn',
+    'error',
+    'fatal',
+    'silent'
+  ])
 })
 
 export type Env = z.infer<typeof EnvSchema>
