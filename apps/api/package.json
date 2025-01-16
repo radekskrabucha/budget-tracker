@@ -17,7 +17,9 @@
     "lint": "eslint \"src/**/*.+(ts|js|tsx|jsx)\"",
     "lint:fix": "eslint \"src/**/*.+(ts|js|tsx|jsx)\" --fix",
     "type-check": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate-migration": "drizzle-kit generate"
   },
   "dependencies": {
     "@budget-tracker/utils": "workspace:*",
