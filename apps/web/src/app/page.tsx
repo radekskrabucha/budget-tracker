@@ -1,3 +1,5 @@
+import { apiClient } from '~/web/lib/client'
+
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -12,6 +14,8 @@ export default function Home() {
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
+
+        <RandomNumber />
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
@@ -32,6 +36,18 @@ export default function Home() {
           </a>
         </div>
       </main>
+    </div>
+  )
+}
+
+const RandomNumber = async () => {
+  const { randomNumber } = await apiClient['random-number']
+    .$get()
+    .then(res => res.json())
+
+  return (
+    <div>
+      <h1>Random number: {randomNumber}</h1>
     </div>
   )
 }

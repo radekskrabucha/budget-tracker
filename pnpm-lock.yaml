@@ -63,6 +63,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@budget-tracker/api':
+        specifier: workspace:*
+        version: link:../api
       next:
         specifier: 15.1.4
         version: 15.1.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
