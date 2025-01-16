@@ -3,6 +3,7 @@ import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { notFound } from '~/api/middleware/notFound'
 import { serveEmojiFavicon } from '~/api/middleware/serveEmojiFavicon'
+import { env } from '~/api/utils/env'
 
 export const app = new Hono()
   .get('/', c => {
@@ -15,7 +16,7 @@ export const app = new Hono()
 app.use(serveEmojiFavicon('💸'))
 app.notFound(notFound)
 
-const port = 3001
+const port = env.PORT
 console.log(`Server is running on http://localhost:${port}`)
 
 serve({
