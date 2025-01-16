@@ -22,6 +22,7 @@
   "dependencies": {
     "@budget-tracker/utils": "workspace:*",
     "@hono/node-server": "1.13.7",
+    "dotenv": "16.4.7",
     "hono": "4.6.16"
   },
   "devDependencies": {
