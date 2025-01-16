@@ -22,7 +22,8 @@ const EnvSchema = z.object({
     'error',
     'fatal',
     'silent'
-  ])
+  ]),
+  DATABASE_URL: z.string()
 })
 
 export type Env = z.infer<typeof EnvSchema>
