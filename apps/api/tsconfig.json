@@ -18,7 +18,8 @@
     "node_modules",
     "**/*.test.ts",
     "**/*.spec.ts",
-    "tests/**/*"
+    "tests/**/*",
+    "drizzle.config.ts"
   ],
   "tsc-alias": {
     "resolveFullPaths": true
