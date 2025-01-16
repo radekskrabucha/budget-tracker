@@ -1,6 +1,7 @@
 import { getRandomInt } from '@budget-tracker/utils'
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
+import { notFound } from '~/api/middleware/notFound'
 import { serveEmojiFavicon } from '~/api/middleware/serveEmojiFavicon'
 
 export const app = new Hono()
@@ -12,6 +13,7 @@ export const app = new Hono()
   })
 
 app.use(serveEmojiFavicon('💸'))
+app.notFound(notFound)
 
 const port = 3001
 console.log(`Server is running on http://localhost:${port}`)
