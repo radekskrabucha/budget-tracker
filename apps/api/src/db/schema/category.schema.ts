@@ -1,0 +1,16 @@
+import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+import { user } from './auth.schema'
+
+export const category = pgTable('category', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  name: text('name').notNull(),
+  description: text('description').notNull(),
+  userId: uuid('user_id').references(() => user.id, {
+    onDelete: 'cascade'
+  }),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at')
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date())
+})
