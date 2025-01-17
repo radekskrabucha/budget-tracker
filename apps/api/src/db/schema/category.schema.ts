@@ -1,6 +1,6 @@
+import { relations } from 'drizzle-orm'
 import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { user } from './auth.schema'
-import { relations } from 'drizzle-orm'
 import { transaction } from './transaction.schema'
 
 export const category = pgTable('category', {
