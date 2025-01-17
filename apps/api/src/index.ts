@@ -7,10 +7,12 @@ import { notFound } from '~/api/middleware/notFound'
 import { onError } from '~/api/middleware/onError'
 import { pinoLogger } from '~/api/middleware/pinoLogger'
 import { serveEmojiFavicon } from '~/api/middleware/serveEmojiFavicon'
+import { adminRouter } from '~/api/routes/admin'
 import type { AppBindings } from '~/api/types/app'
 import { env } from '~/api/utils/env'
 
 export const app = new Hono<AppBindings>()
+  .basePath('/api')
   .use(pinoLogger())
   .use(
     '*',
@@ -19,12 +21,11 @@ export const app = new Hono<AppBindings>()
       credentials: true
     })
   )
-  .get('/', c => {
-    return c.text('Hello Hono!')
-  })
   .get('/random-number', c => {
     return c.json({ randomNumber: getRandomInt(1, 10) })
   })
+
+app.route('/admin', adminRouter)
 
 app.on(['POST', 'GET'], '/auth/*', c => auth.handler(c.req.raw))
 
