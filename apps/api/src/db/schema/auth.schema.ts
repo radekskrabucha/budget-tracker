@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm'
 import {
   pgTable,
   text,
@@ -7,6 +8,8 @@ import {
   integer,
   pgEnum
 } from 'drizzle-orm/pg-core'
+import { category } from './category.schema'
+import { transaction } from './transaction.schema'
 
 export const userRoleEnum = pgEnum('user_role', ['user', 'admin'])
 
@@ -80,3 +83,8 @@ export const verification = pgTable('verification', {
     .defaultNow()
     .$onUpdate(() => new Date())
 })
+
+export const userRelations = relations(user, ({ many }) => ({
+  categories: many(category),
+  transactions: many(transaction)
+}))

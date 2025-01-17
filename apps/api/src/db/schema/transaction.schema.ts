@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm'
 import {
   pgTable,
   text,
@@ -34,3 +35,14 @@ export const transaction = pgTable('transaction', {
     .defaultNow()
     .$onUpdate(() => new Date())
 })
+
+export const transactionRelations = relations(transaction, ({ one }) => ({
+  category: one(category, {
+    fields: [transaction.categoryId],
+    references: [category.id]
+  }),
+  user: one(user, {
+    fields: [transaction.userId],
+    references: [user.id]
+  })
+}))

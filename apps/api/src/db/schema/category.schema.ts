@@ -1,5 +1,7 @@
 import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { user } from './auth.schema'
+import { relations } from 'drizzle-orm'
+import { transaction } from './transaction.schema'
 
 export const category = pgTable('category', {
   id: uuid('id').defaultRandom().primaryKey(),
@@ -14,3 +16,11 @@ export const category = pgTable('category', {
     .defaultNow()
     .$onUpdate(() => new Date())
 })
+
+export const categoryRelations = relations(category, ({ many, one }) => ({
+  transactions: many(transaction),
+  user: one(user, {
+    fields: [category.userId],
+    references: [user.id]
+  })
+}))
