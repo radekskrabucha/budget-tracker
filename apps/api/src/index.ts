@@ -10,6 +10,7 @@ import { serveEmojiFavicon } from '~/api/middleware/serveEmojiFavicon'
 import { adminRouter } from '~/api/routes/admin'
 import type { AppBindings } from '~/api/types/app'
 import { env } from '~/api/utils/env'
+import { categoriesRouter } from './routes/categories'
 
 export const app = new Hono<AppBindings>()
   .basePath('/api')
@@ -25,7 +26,8 @@ export const app = new Hono<AppBindings>()
     return c.json({ randomNumber: getRandomInt(1, 10) })
   })
 
-app.route('/admin', adminRouter)
+app.route('/', adminRouter)
+app.route('/', categoriesRouter)
 
 app.on(['POST', 'GET'], '/auth/*', c => auth.handler(c.req.raw))
 
