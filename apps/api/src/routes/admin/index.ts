@@ -17,6 +17,7 @@ import {
 } from './categories.services'
 
 export const adminRouter = new Hono<AppBindings>()
+  .basePath('/admin')
   .use(authMiddleware)
   .use(adminMiddleware)
   .get('/', async c => {
