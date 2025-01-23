@@ -13,7 +13,6 @@ import { env } from '~/api/utils/env'
 import { categoriesRouter } from './routes/categories'
 
 export const app = new Hono<AppBindings>()
-  .basePath('/api')
   .use(pinoLogger())
   .use(
     '*',
