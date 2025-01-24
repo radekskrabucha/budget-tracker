@@ -15,6 +15,13 @@
       "when": 1737106757851,
       "tag": "0001_dark_iron_patriot",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1737749626772,
+      "tag": "0002_pale_mandrill",
+      "breakpoints": true
     }
   ]
 }
