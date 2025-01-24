@@ -30,7 +30,13 @@ export const getUserTransactions = async (
     orderBy: transaction.date,
     ...getPaginationParams(paginationValues),
     with: {
-      category: true
+      category: {
+        columns: {
+          createdAt: false,
+          updatedAt: false,
+          userId: false
+        }
+      }
     }
   })
 
@@ -53,7 +59,13 @@ export const getUserTransaction = async (id: string, userId: string) => {
   const userTransaction = await db.query.transaction.findFirst({
     where: and(eq(transaction.id, id), eq(transaction.userId, userId)),
     with: {
-      category: true
+      category: {
+        columns: {
+          createdAt: false,
+          updatedAt: false,
+          userId: false
+        }
+      }
     }
   })
 
