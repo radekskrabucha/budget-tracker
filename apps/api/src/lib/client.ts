@@ -1,18 +1,30 @@
+import type { Hono } from 'hono'
 import { hc } from 'hono/client'
-import { app } from '~/api/index'
+import type { adminRouter } from '~/api/routes/admin'
 import type { categoriesRouter } from '~/api/routes/categories'
+import type { testRouter } from '~/api/routes/test'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type HonoClientArgs<T extends Hono<any, any, any>> = Parameters<typeof hc<T>>
+
+export type TestRouter = typeof testRouter
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const client = hc<typeof app>('')
-export type Client = typeof client
+const testClientBase = hc<TestRouter>('')
+export type TestClient = typeof testClientBase
+export const testHC = (...args: HonoClientArgs<TestRouter>): TestClient =>
+  hc<TestRouter>(...args)
 
-export const hcWithType = (...args: Parameters<typeof hc>): Client =>
-  hc<typeof app>(...args)
-
+export type CategoriesRouter = typeof categoriesRouter
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const categoriesClient = hc<typeof categoriesRouter>('')
-export type CategoriesClient = typeof categoriesClient
+const categoriesClientBase = hc<CategoriesRouter>('')
+export type CategoriesClient = typeof categoriesClientBase
+export const categoriesHC = (
+  ...args: HonoClientArgs<CategoriesRouter>
+): CategoriesClient => hc<CategoriesRouter>(...args)
 
-export const hcWithTypeCategories = (
-  ...args: Parameters<typeof hc<typeof categoriesRouter>>
-): CategoriesClient => hc<typeof categoriesRouter>(...args)
+export type AdminRouter = typeof adminRouter
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const adminClientBase = hc<AdminRouter>('')
+export type AdminClient = typeof adminClientBase
+export const adminHC = (...args: HonoClientArgs<AdminRouter>): AdminClient =>
+  hc<AdminRouter>(...args)

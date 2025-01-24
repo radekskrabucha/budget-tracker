@@ -1,4 +1,3 @@
-import { getRandomInt } from '@budget-tracker/utils'
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
@@ -8,25 +7,22 @@ import { onError } from '~/api/middleware/onError'
 import { pinoLogger } from '~/api/middleware/pinoLogger'
 import { serveEmojiFavicon } from '~/api/middleware/serveEmojiFavicon'
 import { adminRouter } from '~/api/routes/admin'
+import { categoriesRouter } from '~/api/routes/categories'
+import { testRouter } from '~/api/routes/test'
 import type { AppBindings } from '~/api/types/app'
 import { env } from '~/api/utils/env'
-import { categoriesRouter } from './routes/categories'
 
-export const app = new Hono<AppBindings>()
-  .use(pinoLogger())
-  .use(
-    '*',
-    cors({
-      origin: env.BETTER_AUTH_TRUSTED_ORIGINS,
-      credentials: true
-    })
-  )
-  .get('/random-number', c => {
-    return c.json({ randomNumber: getRandomInt(1, 10) })
+export const app = new Hono<AppBindings>().use(pinoLogger()).use(
+  '*',
+  cors({
+    origin: env.BETTER_AUTH_TRUSTED_ORIGINS,
+    credentials: true
   })
+)
 
 app.route('/', adminRouter)
 app.route('/', categoriesRouter)
+app.route('/', testRouter)
 
 app.on(['POST', 'GET'], '/auth/*', c => auth.handler(c.req.raw))
 
