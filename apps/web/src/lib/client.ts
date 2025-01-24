@@ -1,3 +1,3 @@
-import { hcWithType } from '@budget-tracker/api'
+import { testHC } from '@budget-tracker/api'
 
-export const apiClient = hcWithType('http://localhost:4000')
+export const testClient = testHC('http://localhost:4000')
