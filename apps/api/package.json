@@ -4,10 +4,10 @@
   "type": "module",
   "private": true,
   "files": [
-    "./src/lib/client.ts"
+    "./dist/lib/client.js"
   ],
   "exports": {
-    ".": "./src/lib/client.ts"
+    ".": "./dist/lib/client.js"
   },
   "scripts": {
     "dev": "tsx watch src/index.ts",
