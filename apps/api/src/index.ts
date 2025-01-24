@@ -6,9 +6,7 @@ import { notFound } from '~/api/middleware/notFound'
 import { onError } from '~/api/middleware/onError'
 import { pinoLogger } from '~/api/middleware/pinoLogger'
 import { serveEmojiFavicon } from '~/api/middleware/serveEmojiFavicon'
-import { adminRouter } from '~/api/routes/admin'
-import { categoriesRouter } from '~/api/routes/categories'
-import { testRouter } from '~/api/routes/test'
+import { adminRouter, appRouter } from '~/api/routes'
 import type { AppBindings } from '~/api/types/app'
 import { env } from '~/api/utils/env'
 
@@ -21,8 +19,7 @@ export const app = new Hono<AppBindings>().use(pinoLogger()).use(
 )
 
 app.route('/', adminRouter)
-app.route('/', categoriesRouter)
-app.route('/', testRouter)
+app.route('/', appRouter)
 
 app.on(['POST', 'GET'], '/auth/*', c => auth.handler(c.req.raw))
 
