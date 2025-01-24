@@ -5,17 +5,39 @@ import type {
   InsertTransaction,
   UpdateTransaction
 } from '~/api/lib/dbZodSchema/transaction'
+import {
+  getPaginationParams,
+  getPaginationValues
+} from '~/api/utils/pagination'
+import type { PaginationQuery } from '~/api/utils/schemas'
 
-export const getUserTransactions = async (userId: string) => {
+export const getUserTransactions = async (
+  userId: string,
+  pagination: PaginationQuery
+) => {
+  const paginationValues = getPaginationValues(pagination)
   const transactions = await db.query.transaction.findMany({
     where: eq(transaction.userId, userId),
     orderBy: transaction.date,
+    ...getPaginationParams(paginationValues),
     with: {
       category: true
     }
   })
 
-  return transactions
+  if (!paginationValues) {
+    return {
+      data: transactions,
+      meta: undefined
+    }
+  }
+
+  const total = await db.$count(transaction, eq(transaction.userId, userId))
+
+  return {
+    data: transactions,
+    meta: { ...paginationValues, total }
+  }
 }
 
 export const getUserTransaction = async (id: string, userId: string) => {

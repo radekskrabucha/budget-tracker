@@ -7,6 +7,7 @@ import {
 import { authMiddleware } from '~/api/middleware/auth'
 import type { AppBindings } from '~/api/types/app'
 import { BAD_REQUEST, CREATED, NOT_FOUND, OK } from '~/api/utils/httpCodes'
+import { paginationSchema } from '~/api/utils/schemas'
 import {
   createUserTransaction,
   deleteUserTransaction,
@@ -18,10 +19,10 @@ import {
 export const transactionsRouter = new Hono<AppBindings>()
   .basePath('/transactions')
   .use(authMiddleware)
-  .get('/', async c => {
+  .get('/', zValidator('query', paginationSchema), async c => {
     const user = c.get('user')
-
-    const result = await getUserTransactions(user.id)
+    const pagination = c.req.valid('query')
+    const result = await getUserTransactions(user.id, pagination)
 
     return c.json(result, OK)
   })

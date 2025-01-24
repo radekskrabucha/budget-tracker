@@ -1,4 +1,3 @@
-import { nonNullable } from '@budget-tracker/utils'
 import type { PaginationQuery } from './schemas'
 
 export type PaginationValues = {
@@ -38,27 +37,13 @@ export const getPaginationValues = (
   return undefined
 }
 
-export type PaginationMeta = {
-  page: number
-  limit: number
-  total: number
-  offset: number
-}
-
-export const getPaginationMeta = ({
-  limit,
-  offset,
-  page,
-  total
-}: Partial<PaginationMeta>): PaginationMeta | undefined =>
-  nonNullable(limit) &&
-  nonNullable(offset) &&
-  nonNullable(page) &&
-  nonNullable(total)
+export const getPaginationParams = (
+  paginationValues: PaginationValues | undefined
+) => ({
+  ...(paginationValues
     ? {
-        total,
-        limit,
-        offset,
-        page
+        limit: paginationValues.limit,
+        offset: paginationValues.offset
       }
-    : undefined
+    : {})
+})
