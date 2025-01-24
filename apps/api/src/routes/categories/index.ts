@@ -37,7 +37,7 @@ export const categoriesRouter = new Hono<AppBindings>()
     const user = c.get('user')
     const { id } = c.req.param()
 
-    const category = await getUserCategory(id, user.id)
+    const category = await getUserCategory(user.id, id)
 
     if (!category) {
       return c.json({ message: 'Category not found' }, NOT_FOUND)

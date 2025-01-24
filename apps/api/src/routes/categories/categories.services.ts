@@ -15,7 +15,7 @@ export const getUserCategories = async (userId: string) => {
   return userCategories
 }
 
-export const getUserCategory = async (id: string, userId: string) => {
+export const getUserCategory = async (userId: string, id: string) => {
   const userCategory = await db.query.category.findFirst({
     where: and(eq(category.id, id), eq(category.userId, userId))
   })
