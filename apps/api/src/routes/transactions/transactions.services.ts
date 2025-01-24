@@ -3,7 +3,8 @@ import { db } from '~/api/db'
 import { transaction } from '~/api/db/schema/transaction.schema'
 import type {
   InsertTransaction,
-  UpdateTransaction
+  UpdateTransaction,
+  TransactionType
 } from '~/api/lib/dbZodSchema/transaction'
 import {
   getPaginationParams,
@@ -11,13 +12,21 @@ import {
 } from '~/api/utils/pagination'
 import type { PaginationQuery } from '~/api/utils/schemas'
 
+type TransactionFilters = {
+  type?: TransactionType
+} & PaginationQuery
+
 export const getUserTransactions = async (
   userId: string,
-  pagination: PaginationQuery
+  { type, ...pagination }: TransactionFilters
 ) => {
   const paginationValues = getPaginationValues(pagination)
+  const whereClause = type
+    ? and(eq(transaction.userId, userId), eq(transaction.type, type))
+    : eq(transaction.userId, userId)
+
   const transactions = await db.query.transaction.findMany({
-    where: eq(transaction.userId, userId),
+    where: whereClause,
     orderBy: transaction.date,
     ...getPaginationParams(paginationValues),
     with: {
@@ -32,7 +41,7 @@ export const getUserTransactions = async (
     }
   }
 
-  const total = await db.$count(transaction, eq(transaction.userId, userId))
+  const total = await db.$count(transaction, whereClause)
 
   return {
     data: transactions,

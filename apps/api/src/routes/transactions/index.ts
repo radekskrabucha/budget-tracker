@@ -2,6 +2,7 @@ import { zValidator } from '@hono/zod-validator'
 import { Hono } from 'hono'
 import {
   insertTransactionSchema,
+  selectTransactionTypeSchema,
   updateTransactionSchema
 } from '~/api/lib/dbZodSchema/transaction'
 import { authMiddleware } from '~/api/middleware/auth'
@@ -16,13 +17,17 @@ import {
   updateUserTransaction
 } from './transactions.services'
 
+const transactionFiltersSchema = selectTransactionTypeSchema
+  .partial()
+  .extend(paginationSchema.shape)
+
 export const transactionsRouter = new Hono<AppBindings>()
   .basePath('/transactions')
   .use(authMiddleware)
-  .get('/', zValidator('query', paginationSchema), async c => {
+  .get('/', zValidator('query', transactionFiltersSchema), async c => {
     const user = c.get('user')
-    const pagination = c.req.valid('query')
-    const result = await getUserTransactions(user.id, pagination)
+    const filters = c.req.valid('query')
+    const result = await getUserTransactions(user.id, filters)
 
     return c.json(result, OK)
   })

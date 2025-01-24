@@ -18,7 +18,15 @@ export const selectTransactionSchema = createSelectSchema(transaction).omit({
   updatedAt: true
 })
 
+export const selectTransactionTypeSchema = selectTransactionSchema.omit({
+  amount: true,
+  date: true,
+  description: true,
+  id: true
+})
+
 export type InsertTransaction = z.infer<typeof insertTransactionSchema>
 export type UpdateTransaction = z.infer<typeof updateTransactionSchema>
 export type SelectTransaction = z.infer<typeof selectTransactionSchema>
-export type SelectTransactionType = SelectTransaction['type']
+export type SelectTransactionType = z.infer<typeof selectTransactionTypeSchema>
+export type TransactionType = SelectTransaction['type']
