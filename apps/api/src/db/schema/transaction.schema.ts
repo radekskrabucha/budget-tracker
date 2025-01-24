@@ -4,7 +4,7 @@ import {
   text,
   timestamp,
   uuid,
-  numeric,
+  integer,
   pgEnum
 } from 'drizzle-orm/pg-core'
 import { user } from './auth.schema'
@@ -25,7 +25,7 @@ export const transaction = pgTable('transaction', {
   categoryId: uuid('category_id').references(() => category.id, {
     onDelete: 'set null'
   }),
-  amount: numeric('amount').notNull(),
+  amount: integer('amount').notNull(),
   description: text('description'),
   date: timestamp('date').notNull(),
   type: transactionTypeEnum('type').notNull(),
