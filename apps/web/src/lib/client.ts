@@ -1,3 +1,3 @@
-import { testHC } from '@budget-tracker/api'
+import { appHC } from '@budget-tracker/api'
 
-export const testClient = testHC('http://localhost:4000')
+export const appClient = appHC('http://localhost:4000')

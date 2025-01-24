@@ -1,4 +1,4 @@
-import { testClient } from '~/web/lib/client'
+import { appClient } from '~/web/lib/client'
 
 export default function Home() {
   return (
@@ -41,7 +41,7 @@ export default function Home() {
 }
 
 const RandomNumber = async () => {
-  const { randomNumber } = await testClient.test['random-number']
+  const { randomNumber } = await appClient.test['random-number']
     .$get()
     .then(res => res.json())
 
