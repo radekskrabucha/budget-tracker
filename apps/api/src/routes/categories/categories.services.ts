@@ -9,7 +9,12 @@ import type {
 export const getUserCategories = async (userId: string) => {
   const userCategories = await db.query.category.findMany({
     where: eq(category.userId, userId),
-    orderBy: category.name
+    orderBy: category.name,
+    columns: {
+      createdAt: false,
+      updatedAt: false,
+      userId: false
+    }
   })
 
   return userCategories
@@ -17,7 +22,12 @@ export const getUserCategories = async (userId: string) => {
 
 export const getUserCategory = async (userId: string, id: string) => {
   const userCategory = await db.query.category.findFirst({
-    where: and(eq(category.id, id), eq(category.userId, userId))
+    where: and(eq(category.id, id), eq(category.userId, userId)),
+    columns: {
+      createdAt: false,
+      updatedAt: false,
+      userId: false
+    }
   })
 
   return userCategory
@@ -74,7 +84,12 @@ export const getCombinedCategories = async (
 
   const categories = await db.query.category.findMany({
     where: whereClause,
-    orderBy: category.name
+    orderBy: category.name,
+    columns: {
+      createdAt: false,
+      updatedAt: false,
+      userId: false
+    }
   })
 
   return categories
