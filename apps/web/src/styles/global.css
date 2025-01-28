@@ -1,9 +1,17 @@
 @import 'tailwindcss';
 @plugin 'tailwindcss-animate';
 
-@custom-variant dark (&:is(.dark *));
-
 @theme {
+  --default-font-family: var(--font-family-main);
+  --default-font-feature-settings: var(
+    --font-family-main--font-feature-settings
+  );
+  --default-font-variation-settings: var(
+    --font-family-main--font-variation-settings
+  );
+  --font-family-main: var(--font-main);
+  --font-main: var(--font-main);
+
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
@@ -74,34 +82,6 @@
 
 @layer base {
   :root {
-    --background: 183 34% 99%;
-    --foreground: 183 68% 2%;
-    --muted: 183 28% 92%;
-    --muted-foreground: 183 5% 27%;
-    --popover: 183 34% 98%;
-    --popover-foreground: 183 68% 1%;
-    --card: 183 34% 98%;
-    --card-foreground: 183 68% 1%;
-    --border: 183 15% 90%;
-    --input: 183 15% 90%;
-    --primary: 183 83% 64%;
-    --primary-foreground: 183 83% 4%;
-    --secondary: 183 13% 89%;
-    --secondary-foreground: 183 13% 29%;
-    --accent: 183 13% 89%;
-    --accent-foreground: 183 13% 29%;
-    --destructive: 21 93% 45%;
-    --destructive-foreground: 0 0% 100%;
-    --ring: 183 83% 64%;
-    --chart-1: 183 83% 64%;
-    --chart-2: 183 13% 89%;
-    --chart-3: 183 13% 89%;
-    --chart-4: 183 13% 92%;
-    --chart-5: 183 86% 64%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
     --background: 183 55% 2%;
     --foreground: 183 11% 99%;
     --muted: 183 28% 8%;
@@ -126,6 +106,7 @@
     --chart-3: 183 12% 13%;
     --chart-4: 183 12% 16%;
     --chart-5: 183 86% 64%;
+    --radius: 0.5rem;
   }
 }
 
@@ -136,5 +117,14 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer utilities {
+  .layout-container {
+    @apply flex w-screen max-w-full flex-col;
+  }
+  .layout-section {
+    @apply flex w-full max-w-[1000px] flex-col self-center px-10 py-6 max-md:px-8 max-sm:px-4;
   }
 }
