@@ -19,6 +19,7 @@
     "./utils/*": "./dist/utils/*.js"
   },
   "dependencies": {
+    "@radix-ui/react-label": "2.1.1",
     "@radix-ui/react-slot": "1.1.1"
   }
 }
