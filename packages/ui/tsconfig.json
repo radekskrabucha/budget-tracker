@@ -1,0 +1,25 @@
+{
+  "extends": "@total-typescript/tsconfig/tsc/dom/library-monorepo",
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "dist",
+    "incremental": true,
+    "rootDir": "src",
+    "lib": ["es2023"],
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+  },
+  "exclude": [
+    "eslint.config.js",
+    "dist",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "tests/**/*",
+    "postcss.config.mjs"
+  ],
+  "tsc-alias": {
+    "resolveFullPaths": true
+  }
+}
