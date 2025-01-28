@@ -24,7 +24,7 @@ const AuthLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
     </header>
 
     <main className="layout-container isolate flex-1 overflow-x-hidden">
-      <div className="layout-section flex-1">{children}</div>
+      {children}
     </main>
 
     <footer className="layout-container border-t">
