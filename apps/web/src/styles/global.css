@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @plugin 'tailwindcss-animate';
+@source '../../node_modules/@budget-tracker/ui';
 
 @theme {
   --default-font-family: var(--font-family-main);
