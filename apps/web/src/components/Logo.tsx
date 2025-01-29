@@ -1,3 +1,3 @@
 export const Logo = () => (
-  <div className="size-8 rounded-full bg-primary shrink-0" />
+  <div className="bg-primary size-8 shrink-0 rounded-full" />
 )

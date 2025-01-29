@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
   <html lang="en">
     <body
-      className={`${MainFont.variable} antialiased font-main text-foreground bg-background`}
+      className={`${MainFont.variable} font-main text-foreground bg-background antialiased`}
     >
       <Providers>
         {children}

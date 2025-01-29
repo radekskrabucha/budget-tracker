@@ -17,16 +17,16 @@ export const AppLayout: React.FC<React.PropsWithChildren> = async ({
   }
 
   return (
-    <div className="layout-container !flex-row min-h-dvh">
+    <div className="layout-container min-h-dvh !flex-row">
       {/* Sidebar */}
-      <aside className="w-64 border-r border-border bg-white/3 text-card-foreground flex flex-col">
-        <div className="p-6 border-b border-border">
+      <aside className="border-border text-card-foreground flex w-64 flex-col border-r bg-white/3">
+        <div className="border-border border-b p-6">
           <Link
             href={InternalLink.home}
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 transition-opacity hover:opacity-80"
           >
             <Logo />
-            <span className="font-semibold text-lg">{appName}</span>
+            <span className="text-lg font-semibold">{appName}</span>
           </Link>
         </div>
 
@@ -55,7 +55,7 @@ export const AppLayout: React.FC<React.PropsWithChildren> = async ({
           </ul>
         </nav>
 
-        <div className="p-4 border-t border-border">
+        <div className="border-border border-t p-4">
           <SignOutButton />
         </div>
       </aside>

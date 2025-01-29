@@ -30,11 +30,11 @@ export const SignOutButton = () => {
   return (
     <Button
       variant="ghost"
-      className="w-full justify-start gap-3 hover:bg-muted hover:text-muted-foreground"
+      className="hover:bg-muted hover:text-muted-foreground w-full justify-start gap-3"
       onClick={() => signOutMutation.mutate()}
       disabled={signOutMutation.isPending}
     >
-      <LogOut className="w-5 h-5" />
+      <LogOut className="h-5 w-5" />
       <span>Sign out</span>
     </Button>
   )

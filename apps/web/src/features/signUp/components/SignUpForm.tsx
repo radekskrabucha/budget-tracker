@@ -68,7 +68,7 @@ export const SignUpForm = () => {
 
         form.handleSubmit()
       }}
-      className="flex flex-col gap-4 max-w-sm w-full"
+      className="flex w-full max-w-sm flex-col gap-4"
       noValidate
     >
       <form.Field name="name">
@@ -76,7 +76,7 @@ export const SignUpForm = () => {
           <div className="flex flex-col gap-2">
             <Label htmlFor={field.name}>
               Name
-              <span className="text-xs text-muted-foreground -mb-2">
+              <span className="text-muted-foreground -mb-2 text-xs">
                 {' '}
                 (Optional)
               </span>

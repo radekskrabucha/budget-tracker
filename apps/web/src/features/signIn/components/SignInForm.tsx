@@ -58,7 +58,7 @@ export const SignInForm = () => {
 
         form.handleSubmit()
       }}
-      className="flex flex-col gap-4 max-w-sm w-full"
+      className="flex w-full max-w-sm flex-col gap-4"
       noValidate
     >
       <form.Field name="email">
