@@ -24,13 +24,13 @@ const signUpSchema = z.object({
 type Form = z.infer<typeof signUpSchema>
 
 export const SignUpForm = () => {
-  const { push } = useRouter()
+  const { replace } = useRouter()
   const { toast } = useToast()
   const signUpMutation = useMutation({
     mutationFn: signUp,
     mutationKey: ['signUp'],
     onSuccess: () => {
-      push(InternalLink.home)
+      replace(InternalLink.home)
     },
     onError: () => {
       toast({
