@@ -17,9 +17,9 @@ export const AppLayout: React.FC<React.PropsWithChildren> = async ({
   }
 
   return (
-    <div className="relative flex min-h-dvh w-full">
+    <div className="layout-container !flex-row">
       {/* Sidebar */}
-      <aside className="w-64 border-r bg-card text-card-foreground flex flex-col">
+      <aside className="w-64 border-r border-border bg-white/3 text-card-foreground flex flex-col">
         <div className="p-6 border-b border-border">
           <Link
             href={InternalLink.home}
@@ -31,7 +31,7 @@ export const AppLayout: React.FC<React.PropsWithChildren> = async ({
         </div>
 
         <nav className="flex-1 p-4">
-          <ul className="space-y-2">
+          <ul className="flex flex-col gap-2">
             <NavItem
               href={InternalLink.home}
               label="Home"
@@ -61,9 +61,7 @@ export const AppLayout: React.FC<React.PropsWithChildren> = async ({
       </aside>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col overflow-x-hidden bg-background">
-        <main className="layout-container isolate flex-1">{children}</main>
-      </div>
+      <main className="isolate flex flex-1 flex-col">{children}</main>
     </div>
   )
 }
