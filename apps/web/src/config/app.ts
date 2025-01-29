@@ -1,8 +1,8 @@
-import { LinkProps } from 'next/link'
-
-export const InternalLink: Record<string, LinkProps['href']> = {
-  home: '/'
-}
+export const InternalLink = {
+  home: '/',
+  signUp: '/sign-up',
+  signIn: '/sign-in'
+} as const
 
 export const ownerEmail = 'rskrabucha13@gmail.com'
 
