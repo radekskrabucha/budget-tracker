@@ -1,0 +1,26 @@
+{
+  "name": "@budget-tracker/ui",
+  "version": "1.0.0",
+  "type": "module",
+  "files": [
+    "./dist/*"
+  ],
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "format": "prettier ./src --write",
+    "lint": "eslint \"src/**/*.+(ts|js|tsx|jsx)\"",
+    "lint:fix": "eslint \"src/**/*.+(ts|js|tsx|jsx)\" --fix",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "exports": {
+    "./components/*": "./dist/components/*.js",
+    "./hooks/*": "./dist/hooks/*.js",
+    "./utils/*": "./dist/utils/*.js"
+  },
+  "dependencies": {
+    "@radix-ui/react-label": "2.1.1",
+    "@radix-ui/react-slot": "1.1.1",
+    "@radix-ui/react-toast": "1.2.5"
+  }
+}
