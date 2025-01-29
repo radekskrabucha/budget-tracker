@@ -1,12 +1,12 @@
 import { Toaster } from '@budget-tracker/ui/components/ui/toaster'
 import type { Metadata } from 'next'
 import Providers from '~/web/components/Providers'
-import { AppName } from '~/web/config/app'
+import { appName } from '~/web/config/app'
 import { MainFont } from '~/web/styles/fonts'
 import '~/web/styles/global.css'
 
 export const metadata: Metadata = {
-  title: AppName,
+  title: appName,
   description: 'Budget Tracker app for tracking your finances'
 }
 

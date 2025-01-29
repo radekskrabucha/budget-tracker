@@ -12,4 +12,4 @@ export const ExternalLink = {
   sourceCode: 'https://github.com/radekskrabucha/budget-tracker'
 } as const
 
-export const AppName = 'Budget Tracker'
+export const appName = 'Budget Tracker'
