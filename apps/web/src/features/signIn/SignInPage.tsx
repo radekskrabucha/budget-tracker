@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { InternalLink } from '~/web/config/app'
 import { SignInForm } from './components/SignInForm'
 
 export const SignInPage = () => (
@@ -9,5 +11,14 @@ export const SignInPage = () => (
       </p>
     </div>
     <SignInForm />
+    <p className="text-muted-foreground text-sm">
+      Don&apos;t have an account?{' '}
+      <Link
+        href={InternalLink.signUp}
+        className="text-primary hover:underline"
+      >
+        Sign up
+      </Link>
+    </p>
   </div>
 )
