@@ -1,3 +1,4 @@
+import { Toaster } from '@budget-tracker/ui/components/ui/toaster'
 import type { Metadata } from 'next'
 import Providers from '~/web/components/Providers'
 import { AppName } from '~/web/config/app'
@@ -14,7 +15,10 @@ const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
     <body
       className={`${MainFont.variable} antialiased font-main text-foreground`}
     >
-      <Providers>{children}</Providers>
+      <Providers>
+        {children}
+        <Toaster />
+      </Providers>
     </body>
   </html>
 )
