@@ -5,10 +5,13 @@ import { Button } from '@budget-tracker/ui/components/ui/button'
 import { Input } from '@budget-tracker/ui/components/ui/input'
 import { Label } from '@budget-tracker/ui/components/ui/label'
 import { StatusMessage } from '@budget-tracker/ui/components/ui/statusMessage'
+import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { useForm } from '@tanstack/react-form'
 import { useMutation } from '@tanstack/react-query'
 import { ZodValidator } from '@tanstack/zod-form-adapter'
+import { useRouter } from 'next/navigation'
 import { z } from 'zod'
+import { InternalLink } from '~/web/config/app'
 import { getNameFromEmail } from '~/web/utils/email'
 import { signUp } from '../actions'
 
@@ -21,9 +24,22 @@ const signUpSchema = z.object({
 type Form = z.infer<typeof signUpSchema>
 
 export const SignUpForm = () => {
+  const { push } = useRouter()
+  const { toast } = useToast()
   const signUpMutation = useMutation({
     mutationFn: signUp,
-    mutationKey: ['signUp']
+    mutationKey: ['signUp'],
+    onSuccess: () => {
+      push(InternalLink.home)
+    },
+    onError: () => {
+      toast({
+        title: 'Something went wrong.',
+        description:
+          'We were unable to create your account. Please use a different email or try again later.',
+        variant: 'destructive'
+      })
+    }
   })
 
   const form = useForm<Form, ZodValidator>({
