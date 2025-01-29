@@ -17,7 +17,7 @@ export const AppLayout: React.FC<React.PropsWithChildren> = async ({
   }
 
   return (
-    <div className="layout-container !flex-row">
+    <div className="layout-container !flex-row min-h-dvh">
       {/* Sidebar */}
       <aside className="w-64 border-r border-border bg-white/3 text-card-foreground flex flex-col">
         <div className="p-6 border-b border-border">
