@@ -8,3 +8,6 @@ type SignInReq = Pick<
 >
 
 export const signIn = (data: SignInReq) => signInReq(data)
+
+
+export const signOut = authClient.signOut
