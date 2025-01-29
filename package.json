@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "turbo dev",
-    "build": "turbo build",
+    "build": "turbo build --filter='!@budget-tracker/web'",
     "start": "turbo start",
     "format": "pnpm -r --parallel format",
     "lint": "turbo lint",
