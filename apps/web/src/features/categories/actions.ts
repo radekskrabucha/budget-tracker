@@ -37,9 +37,11 @@ export const createCategory = async (req: CreateCategoryReq) => {
 }
 
 const updateCategoryReq = appClient.categories[':id'].$put
-type UpdateCategoryReq = Parameters<typeof updateCategoryReq>[0]['json']
+type UpdateCategoryReq = Parameters<typeof updateCategoryReq>[0]['json'] & {
+  id: string
+}
 
-export const updateCategory = async (id: string, req: UpdateCategoryReq) => {
+export const updateCategory = async ({ id, ...req }: UpdateCategoryReq) => {
   const res = await updateCategoryReq(
     {
       param: { id },
