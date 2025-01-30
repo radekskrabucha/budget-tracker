@@ -1,5 +1,6 @@
 import { buttonVariants } from '@budget-tracker/ui/components/ui/button'
 import { cx } from 'class-variance-authority'
+import { format } from 'date-fns'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { InternalLink } from '~/web/config/app'
@@ -42,7 +43,7 @@ export const TransactionTile: React.FC<TransactionWithCategory> = ({
         )}
       </div>
     </div>
-    <div className="text-muted-foreground text-sm">{date}</div>
+    <div className="text-muted-foreground text-sm">{format(date, 'PPP')}</div>
     <div className={buttonVariants({ variant: 'ghost', size: 'sm' })}>
       <span className="mr-2">Details</span>
       <ArrowRight className="size-4" />
