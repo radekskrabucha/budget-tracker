@@ -1,4 +1,5 @@
 import { buttonVariants } from '@budget-tracker/ui/components/ui/button'
+import { cx } from 'class-variance-authority'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { InternalLink } from '~/web/config/app'
@@ -9,33 +10,42 @@ export const TransactionTile: React.FC<TransactionWithCategory> = ({
   amount,
   type,
   date,
-  description,
-  category
+  category,
+  description
 }) => (
   <Link
     href={InternalLink.transactionDetails(id)}
-    className="bg-card text-card-foreground border-border hover:border-primary flex items-center justify-between gap-4 rounded-lg border p-6 shadow-sm transition-colors"
+    className={cx(
+      'border-border bg-card flex items-center gap-4 rounded-lg border p-4 shadow-sm transition-colors',
+      type === 'expense' ? 'hover:border-destructive' : 'hover:border-primary'
+    )}
   >
-    <div className="flex flex-col gap-1">
-      <div className="flex items-center gap-2">
-        <span className="font-medium">${amount}</span>
+    <div className="flex flex-1 items-center gap-4">
+      <div className="flex flex-col">
         <span className="text-muted-foreground text-sm capitalize">{type}</span>
+        <span
+          className={`font-medium ${type === 'expense' ? 'text-destructive' : 'text-primary'}`}
+        >
+          ${amount}
+        </span>
+      </div>
+      <div className="flex flex-col">
         {category && (
-          <span className="text-muted-foreground text-sm">
-            • {category.name}
+          <span className="text-muted-foreground font-bold">
+            {category.name}
+          </span>
+        )}
+        {description && (
+          <span className="text-muted-foreground line-clamp-1 text-xs">
+            {description}
           </span>
         )}
       </div>
-      {description && (
-        <p className="text-muted-foreground text-sm">{description}</p>
-      )}
-      <p className="text-muted-foreground text-sm">{date}</p>
     </div>
-    <div className="flex items-center gap-2">
-      <div className={buttonVariants({ variant: 'ghost', size: 'sm' })}>
-        <span className="mr-2">See details</span>
-        <ArrowRight className="text-muted-foreground size-4" />
-      </div>
+    <div className="text-muted-foreground text-sm">{date}</div>
+    <div className={buttonVariants({ variant: 'ghost', size: 'sm' })}>
+      <span className="mr-2">Details</span>
+      <ArrowRight className="size-4" />
     </div>
   </Link>
 )
