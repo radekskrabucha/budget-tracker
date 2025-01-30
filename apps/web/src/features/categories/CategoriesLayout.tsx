@@ -8,7 +8,7 @@ export const CategoriesLayout = ({ children }: React.PropsWithChildren) => (
     <div className="layout-section">
       <div className="flex items-center justify-between">
         <Link
-          href={InternalLink.profile}
+          href={InternalLink.categories}
           className="text-2xl font-semibold"
         >
           Your categories
