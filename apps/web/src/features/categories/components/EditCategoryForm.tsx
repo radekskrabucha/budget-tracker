@@ -5,6 +5,7 @@ import { Input } from '@budget-tracker/ui/components/ui/input'
 import { Label } from '@budget-tracker/ui/components/ui/label'
 import { LoaderCircle } from '@budget-tracker/ui/components/ui/loaderCircle'
 import { StatusMessage } from '@budget-tracker/ui/components/ui/statusMessage'
+import { Textarea } from '@budget-tracker/ui/components/ui/textarea'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { useForm } from '@tanstack/react-form'
 import { useMutation } from '@tanstack/react-query'
@@ -105,9 +106,8 @@ export const EditCategoryForm: React.FC<EditCategoryFormProps> = ({
           {field => (
             <div className="flex flex-col gap-2">
               <Label htmlFor={field.name}>Description</Label>
-              <Input
+              <Textarea
                 id={field.name}
-                type="text"
                 name={field.name}
                 value={field.state.value}
                 onChange={e => field.handleChange(e.target.value)}
