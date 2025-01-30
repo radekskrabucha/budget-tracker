@@ -6,7 +6,7 @@ export const CategoriesPage = async () => {
 
   return (
     <>
-      <section className="layout-section">
+      <section className="layout-section gap-4">
         {data.categories.map(category => (
           <CategoryTile
             key={category.id}
