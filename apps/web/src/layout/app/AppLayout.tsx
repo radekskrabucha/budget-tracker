@@ -31,6 +31,11 @@ export const AppLayout: React.FC<React.PropsWithChildren> = async ({
         </div>
 
         <nav className="flex-1 p-4">
+          <div className="px-2 py-4">
+            <h2 className="text-muted-foreground text-lg font-semibold">
+              Welcome, {session.user.name}
+            </h2>
+          </div>
           <ul className="flex flex-col gap-2">
             <NavItem
               href={InternalLink.home}
