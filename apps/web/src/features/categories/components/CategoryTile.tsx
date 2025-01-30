@@ -6,7 +6,7 @@ import { Category } from '../types'
 import { CategoryDeleteButton } from './CategoryDeleteButton'
 
 export const CategoryTile: React.FC<Category> = ({ id, name, description }) => (
-  <div className="bg-card text-card-foreground border-border hover:border-primary flex items-start justify-between gap-4 rounded-lg border p-6 shadow-sm transition-colors">
+  <div className="bg-card text-card-foreground border-border hover:border-primary flex items-center justify-between gap-4 rounded-lg border p-6 shadow-sm transition-colors">
     <div className="flex flex-col gap-1">
       <h3 className="font-medium">{name}</h3>
       <p className="text-muted-foreground text-sm">{description}</p>
