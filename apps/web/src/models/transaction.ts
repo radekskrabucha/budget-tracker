@@ -5,3 +5,5 @@ export type TransactionWithCategory = Awaited<
 >['transaction']
 
 export type Transaction = Omit<TransactionWithCategory, 'category'>
+
+export type TransactionType = Transaction['type']
