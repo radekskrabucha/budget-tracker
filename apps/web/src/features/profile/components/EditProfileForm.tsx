@@ -1,9 +1,9 @@
 'use client'
 
-import { LoaderCircle } from '@budget-tracker/ui/components/ui/LoaderCircle'
 import { Button } from '@budget-tracker/ui/components/ui/button'
 import { Input } from '@budget-tracker/ui/components/ui/input'
 import { Label } from '@budget-tracker/ui/components/ui/label'
+import { LoaderCircle } from '@budget-tracker/ui/components/ui/loaderCircle'
 import { StatusMessage } from '@budget-tracker/ui/components/ui/statusMessage'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { useForm } from '@tanstack/react-form'

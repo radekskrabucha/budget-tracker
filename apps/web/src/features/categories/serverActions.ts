@@ -26,7 +26,7 @@ export const getUserCategory = async (id: string) => {
         }
       )
     )
-  
+
     return res
   } catch (error) {
     if (error instanceof ApiError) {
