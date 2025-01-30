@@ -4,7 +4,10 @@ export const InternalLink = {
   signIn: '/sign-in',
   transactions: '/transactions',
   categories: '/categories',
-  profile: '/profile'
+  profile: '/profile',
+  changePassword: '/profile/change-password',
+  editProfile: '/profile/edit',
+  deleteProfile: '/profile/delete'
 } as const
 
 export const ownerEmail = 'rskrabucha13@gmail.com'
