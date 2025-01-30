@@ -1,4 +1,5 @@
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
+import { InternalLink } from '~/web/config/app'
 import { EditCategoryForm } from './components/EditCategoryForm'
 import { getUserCategory } from './serverActions'
 
@@ -14,7 +15,7 @@ export const EditCategoryPage: React.FC<EditCategoryPageProps> = async ({
   const data = await getUserCategory(id)
 
   if (!data) {
-    return notFound()
+    throw redirect(InternalLink.categories)
   }
 
   return (
