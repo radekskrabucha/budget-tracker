@@ -11,7 +11,7 @@ type ErrorProps = {
 
 const Error: React.FC<ErrorProps> = ({ error, reset }) => (
   <div className="layout-container min-h-dvh">
-    <section className="layout-section flex-1 items-center justify-center gap-4 text-center">
+    <section className="layout-section-auth flex-1 items-center justify-center gap-4 text-center">
       <h1 className="text-destructive text-6xl font-bold">Error</h1>
       <h2 className="text-2xl font-semibold">Something went wrong!</h2>
       <p className="text-muted-foreground">
