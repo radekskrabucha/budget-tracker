@@ -12,8 +12,8 @@ import { ZodValidator } from '@tanstack/zod-form-adapter'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { InternalLink } from '~/web/config/app'
+import { Category } from '~/web/models/category'
 import { updateCategory } from '../actions'
-import { Category } from '../types'
 
 const editCategoryFormSchema = z.object({
   name: z.string().min(1, 'Name is required'),
