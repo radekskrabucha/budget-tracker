@@ -38,7 +38,7 @@ export const CategoryDeleteButton: React.FC<CategoryDeleteButtonProps> = ({
     <Button
       variant="ghost"
       size="icon"
-      className="hover:text-destructive"
+      className="text-muted-foreground hover:text-destructive transition-colors"
       onClick={() => deleteCategoryMutation.mutate()}
       disabled={deleteCategoryMutation.isPending}
     >
