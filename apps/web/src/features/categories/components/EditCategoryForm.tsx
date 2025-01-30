@@ -130,7 +130,7 @@ export const EditCategoryForm: React.FC<EditCategoryFormProps> = ({
           className="mt-2"
         >
           {updateCategoryMutation.isPending && <LoaderCircle />}
-          Create Category
+          Update Category
         </Button>
       </form>
     </section>
