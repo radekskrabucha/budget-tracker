@@ -38,3 +38,13 @@ export const getUserCategory = async (id: string) => {
     throw error
   }
 }
+
+export const getUserCombinedCategories = async () => {
+  const data = await fetchWrapper(
+    appClient.categories.combined.$get(undefined, {
+      headers: await getHeaders()
+    })
+  )
+
+  return data
+}
