@@ -19,7 +19,7 @@ export const AppLayout: React.FC<React.PropsWithChildren> = async ({
   return (
     <div className="layout-container min-h-dvh !flex-row">
       {/* Sidebar */}
-      <aside className="border-border text-card-foreground flex w-64 flex-col border-r bg-white/3">
+      <aside className="border-border text-card-foreground bg-card flex w-64 flex-col border-r">
         <div className="border-border border-b p-6">
           <Link
             href={InternalLink.home}
