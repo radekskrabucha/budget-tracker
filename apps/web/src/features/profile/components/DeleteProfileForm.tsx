@@ -82,7 +82,7 @@ export const DeleteProfileForm = () => {
             <div className="flex flex-col gap-2">
               <Label htmlFor={field.name}>
                 Type{' '}
-                <span className="bg-destructive/30 rounded-sm py-0.5 px-1 font-mono">
+                <span className="bg-destructive/30 rounded-sm px-1 py-0.5 font-mono">
                   {CONFIRMATION_TEXT}
                 </span>{' '}
                 to confirm
