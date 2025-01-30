@@ -24,4 +24,4 @@ export const TransactionsLayout = ({ children }: React.PropsWithChildren) => (
     </div>
     {children}
   </>
-) 
+)

@@ -5,6 +5,7 @@ export const InternalLink = {
   transactions: '/transactions',
   addTransaction: '/transactions/add',
   editTransaction: (id: string) => `/transactions/${id}/edit`,
+  transactionDetails: (id: string) => `/transactions/${id}`,
   categories: '/categories',
   addCategory: '/categories/add',
   editCategory: (id: string) => `/categories/${id}/edit`,
