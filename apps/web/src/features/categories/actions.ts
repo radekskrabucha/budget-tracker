@@ -1,5 +1,9 @@
 import { appClient } from '~/web/lib/client'
-import { getHeaders } from '~/web/utils/headers'
+
+const init = {
+  credentials: 'include',
+  mode: 'cors'
+} satisfies RequestInit
 
 export const deleteCategory = async (id: string) => {
   const res = await appClient.categories[':id'].$delete(
@@ -7,7 +11,7 @@ export const deleteCategory = async (id: string) => {
       param: { id }
     },
     {
-      headers: await getHeaders()
+      init
     }
   )
   const data = await res.json()
@@ -24,7 +28,7 @@ export const createCategory = async (req: CreateCategoryReq) => {
       json: req
     },
     {
-      headers: await getHeaders()
+      init
     }
   )
   const data = await res.json()
@@ -42,7 +46,7 @@ export const updateCategory = async (id: string, req: UpdateCategoryReq) => {
       json: req
     },
     {
-      headers: await getHeaders()
+      init
     }
   )
   const data = await res.json()
