@@ -5,18 +5,32 @@ import { Circle } from 'lucide-react'
 import * as React from 'react'
 import { cn } from '~/utils/styles.js'
 
-const RadioGroup = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
->(({ className, ...props }, ref) => {
+type RadioGroupProps<T extends string = string> = Omit<
+  React.ComponentProps<typeof RadioGroupPrimitive.Root>,
+  'defaultValue' | 'value' | 'onValueChange'
+> & {
+  defaultValue?: T
+  value?: T
+  onValueChange?: (value: T) => void
+}
+
+function RadioGroup<T extends string = string>({
+  className,
+  defaultValue,
+  value,
+  onValueChange,
+  ...props
+}: RadioGroupProps<T>) {
   return (
     <RadioGroupPrimitive.Root
       className={cn('grid gap-2', className)}
+      defaultValue={defaultValue}
+      value={value}
+      onValueChange={onValueChange as (value: string) => void}
       {...props}
-      ref={ref}
     />
   )
-})
+}
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 
 const RadioGroupItem = React.forwardRef<
