@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { Logo } from '~/web/components/Logo'
 import { appName, InternalLink } from '~/web/config/app'
-import { getSession } from '~/web/features/signIn/serverActions'
+import { getSession } from '~/web/features/auth/serverActions'
 import { NavItem } from './components/NavItem'
 import { SignOutButton } from './components/SignOutButton'
 

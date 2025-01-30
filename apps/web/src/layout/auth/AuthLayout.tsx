@@ -9,7 +9,7 @@ import {
   InternalLink,
   ownerEmail
 } from '~/web/config/app'
-import { getSession } from '~/web/features/signIn/serverActions'
+import { getSession } from '~/web/features/auth/serverActions'
 import { IconLink } from './components/IconLink'
 
 export const AuthLayout: React.FC<React.PropsWithChildren> = async ({

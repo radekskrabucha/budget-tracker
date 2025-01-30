@@ -3,7 +3,7 @@ import { Mail, Pencil, User } from 'lucide-react'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { InternalLink } from '~/web/config/app'
-import { getSession } from '~/web/features/signIn/serverActions'
+import { getSession } from '~/web/features/auth/serverActions'
 import { ProfileField } from './ProfileField'
 
 export const ProfileCard = async () => {

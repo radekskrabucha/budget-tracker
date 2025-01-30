@@ -1,3 +1,3 @@
-import { SignInPage } from '~/web/features/signIn/SignInPage'
+import { SignInPage } from '~/web/features/auth/SignInPage'
 
 export default SignInPage

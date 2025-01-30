@@ -6,7 +6,7 @@ import { useMutation } from '@tanstack/react-query'
 import { LogOut } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { InternalLink } from '~/web/config/app'
-import { signOut } from '~/web/features/signIn/actions'
+import { signOut } from '~/web/features/auth/actions'
 
 export const SignOutButton = () => {
   const router = useRouter()

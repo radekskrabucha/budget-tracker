@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { InternalLink } from '~/web/config/app'
-import { getSession } from '~/web/features/signIn/serverActions'
+import { getSession } from '~/web/features/auth/serverActions'
 import { EditProfileForm } from './components/EditProfileForm'
 
 export const EditProfilePage = async () => {

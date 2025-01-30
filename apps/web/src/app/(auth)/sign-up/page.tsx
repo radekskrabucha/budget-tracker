@@ -1,3 +1,3 @@
-import { SignUpPage } from '~/web/features/signUp/SignUpPage'
+import { SignUpPage } from '~/web/features/auth/SignUpPage'
 
 export default SignUpPage
