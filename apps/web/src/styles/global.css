@@ -126,6 +126,9 @@
     @apply flex w-screen max-w-full flex-col;
   }
   .layout-section {
+    @apply flex w-full max-w-[1500px] flex-col px-10 py-6 max-md:px-8 max-sm:px-6;
+  }
+  .layout-section-auth {
     @apply flex w-full max-w-[1000px] flex-col self-center px-10 py-6 max-md:px-8 max-sm:px-4;
   }
 }

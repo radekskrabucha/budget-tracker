@@ -24,7 +24,7 @@ export const AuthLayout: React.FC<React.PropsWithChildren> = async ({
   return (
     <div className="bg-background relative flex min-h-dvh w-full flex-col overflow-x-hidden">
       <header className="layout-container border-b">
-        <div className="layout-section">
+        <div className="layout-section-auth">
           <Link
             href={InternalLink.home}
             className="flex items-center gap-3 transition-opacity hover:opacity-80"
@@ -40,7 +40,7 @@ export const AuthLayout: React.FC<React.PropsWithChildren> = async ({
       </main>
 
       <footer className="layout-container border-t">
-        <div className="layout-section items-center text-center">
+        <div className="layout-section-auth items-center text-center">
           <div className="flex flex-col items-center gap-4">
             <p className="text-muted-foreground text-sm">
               © {getFullYear()} {appName}. All rights reserved.
