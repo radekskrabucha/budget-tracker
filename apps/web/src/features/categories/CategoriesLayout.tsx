@@ -6,7 +6,7 @@ import { InternalLink } from '~/web/config/app'
 export const CategoriesLayout = ({ children }: React.PropsWithChildren) => (
   <>
     <div className="layout-section">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-4">
         <Link
           href={InternalLink.categories}
           className="text-2xl font-semibold"
