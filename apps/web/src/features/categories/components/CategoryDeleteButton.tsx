@@ -4,6 +4,7 @@ import { Button } from '@budget-tracker/ui/components/ui/button'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { useMutation } from '@tanstack/react-query'
 import { Trash2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { deleteCategory } from '../actions'
 
 type CategoryDeleteButtonProps = {
@@ -14,6 +15,7 @@ export const CategoryDeleteButton: React.FC<CategoryDeleteButtonProps> = ({
   id
 }) => {
   const { toast } = useToast()
+  const router = useRouter()
 
   const deleteCategoryMutation = useMutation({
     mutationFn: () => deleteCategory(id),
@@ -24,6 +26,7 @@ export const CategoryDeleteButton: React.FC<CategoryDeleteButtonProps> = ({
         description: 'Category has been deleted successfully.',
         variant: 'default'
       })
+      router.refresh()
     },
     onError: () => {
       toast({
