@@ -11,3 +11,17 @@ export const getUserCategories = async () => {
 
   return data
 }
+
+export const getUserCategory = async (id: string) => {
+  const res = await appClient.categories[':id'].$get(
+    {
+      param: { id }
+    },
+    {
+      headers: await getHeaders()
+    }
+  )
+  const data = await res.json()
+
+  return data
+}
