@@ -10,8 +10,9 @@ type EditCategoryPageProps = {
 }
 
 export const EditCategoryPage: React.FC<EditCategoryPageProps> = async ({
-  params: { id }
+  params
 }) => {
+  const { id } = await params
   const data = await getUserCategory(id)
 
   if (!data) {
