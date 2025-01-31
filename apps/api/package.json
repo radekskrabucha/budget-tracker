@@ -2,6 +2,13 @@
   "name": "@budget-tracker/api",
   "version": "1.0.0",
   "type": "module",
+  "private": true,
+  "files": [
+    "./dist/lib/client.js"
+  ],
+  "exports": {
+    ".": "./dist/lib/client.js"
+  },
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc && tsc-alias",
@@ -10,15 +17,25 @@
     "lint": "eslint \"src/**/*.+(ts|js|tsx|jsx)\"",
     "lint:fix": "eslint \"src/**/*.+(ts|js|tsx|jsx)\" --fix",
     "type-check": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate-migration": "drizzle-kit generate"
   },
   "dependencies": {
     "@budget-tracker/utils": "workspace:*",
     "@hono/node-server": "1.13.7",
-    "hono": "4.6.16"
+    "@hono/zod-validator": "0.4.2",
+    "@neondatabase/serverless": "0.10.4",
+    "dotenv": "16.4.7",
+    "drizzle-orm": "0.39.1",
+    "drizzle-zod": "0.7.0",
+    "hono": "4.6.19",
+    "hono-pino": "0.7.0",
+    "pino": "9.6.0",
+    "pino-pretty": "13.0.0"
   },
   "devDependencies": {
-    "@types/node": "20.11.17",
-    "tsx": "4.7.1"
+    "drizzle-kit": "0.30.4",
+    "tsx": "4.19.2"
   }
 }
