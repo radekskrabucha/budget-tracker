@@ -21,7 +21,7 @@ export const TransactionDetailsPage: React.FC<
       <section className="layout-section">
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-1">
-            <h1 className="text-3xl font-bold">Transaction Details</h1>
+            <h2 className="text-2xl font-semibold">Transaction Details</h2>
             <p className="text-muted-foreground text-sm">
               View and manage your transaction
             </p>
