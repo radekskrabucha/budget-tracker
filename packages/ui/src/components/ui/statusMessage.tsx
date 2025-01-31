@@ -2,7 +2,7 @@ import { type VariantProps, cva } from 'class-variance-authority'
 import * as React from 'react'
 
 export type StatusMessageProps = VariantProps<typeof statusMessageVariants> &
-  React.ComponentProps<'span'>
+  React.ComponentPropsWithRef<'span'>
 
 export const StatusMessage: React.FC<StatusMessageProps> = ({
   className,
