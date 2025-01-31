@@ -30,6 +30,7 @@ import { useMutation } from '@tanstack/react-query'
 import { ZodValidator } from '@tanstack/zod-form-adapter'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { InternalLink } from '~/web/config/app'
@@ -246,6 +247,12 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
                   ))}
                 </SelectContent>
               </Select>
+              <span className="text-muted-foreground text-xs">
+                Can&apos;t find the category you&apos;re looking for?{' '}
+                <Link href={InternalLink.addCategory}>
+                  <span className="text-primary">Create a new one</span>
+                </Link>
+              </span>
               {field.state.meta.errors ? (
                 <StatusMessage variant="error">
                   {field.state.meta.errors[0]}
