@@ -125,11 +125,14 @@ export const createUserTransaction = async (
 export const updateUserTransaction = async (
   userId: string,
   id: string,
-  data: UpdateTransaction
+  { amount, ...data }: UpdateTransaction
 ) => {
   const [updatedTransaction] = await db
     .update(transaction)
-    .set(data)
+    .set({
+      ...data,
+      amount: amount ? decimalToInt(amount) : undefined
+    })
     .where(and(eq(transaction.id, id), eq(transaction.userId, userId)))
     .returning()
 
