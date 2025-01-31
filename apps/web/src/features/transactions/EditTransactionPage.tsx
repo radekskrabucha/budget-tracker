@@ -1,3 +1,4 @@
+import { getUserCombinedCategories } from '~/web/features/categories/serverActions'
 import { EditTransactionForm } from './components/EditTransactionForm'
 import { getUserTransaction } from './serverActions'
 
@@ -18,11 +19,14 @@ export const EditTransactionPage: React.FC<
     return <div>Transaction not found</div>
   }
 
+  const categoriesData = await getUserCombinedCategories()
+
   return (
     <>
       <EditTransactionForm
         id={id}
         transaction={data.transaction}
+        categories={categoriesData.categories}
       />
     </>
   )
