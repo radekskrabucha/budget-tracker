@@ -10,10 +10,12 @@ export const insertTransactionSchema = createInsertSchema(transaction, {
     createdAt: true,
     updatedAt: true,
     userId: true,
-    date: true
+    date: true,
+    amount: true
   })
   .extend({
-    date: z.coerce.date()
+    date: z.coerce.date(),
+    amount: z.number()
   })
 export const updateTransactionSchema = insertTransactionSchema.partial()
 export const selectTransactionSchema = createSelectSchema(transaction).omit({
