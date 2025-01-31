@@ -6,15 +6,15 @@ import { TransactionDeleteButton } from './components/TransactionDeleteButton'
 import { TransactionDetails } from './components/TransactionDetails'
 
 type TransactionDetailsPageProps = {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export const TransactionDetailsPage: React.FC<
   TransactionDetailsPageProps
 > = async ({ params }) => {
-  const { id } = params
+  const { id } = await params
 
   return (
     <>
