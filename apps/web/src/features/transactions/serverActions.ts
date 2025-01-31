@@ -1,6 +1,6 @@
 'use server'
 
-import { fetchWrapper } from '@budget-tracker/api'
+import { ApiError, fetchWrapper } from '@budget-tracker/api'
 import { appClient } from '~/web/lib/client'
 import { getHeaders } from '~/web/utils/headers'
 
@@ -30,16 +30,26 @@ type GetUserTransactionReq = Parameters<
 >[0]['param']
 
 export const getUserTransaction = async (req: GetUserTransactionReq) => {
-  const data = await fetchWrapper(
-    getUserTransactionReq(
-      {
-        param: req
-      },
-      {
-        headers: await getHeaders()
-      }
+  try {
+    const data = await fetchWrapper(
+      getUserTransactionReq(
+        {
+          param: req
+        },
+        {
+          headers: await getHeaders()
+        }
+      )
     )
-  )
 
-  return data
+    return data
+  } catch (error) {
+    if (error instanceof ApiError) {
+      if (error.status === 404) {
+        return undefined
+      }
+    }
+
+    throw error
+  }
 }
