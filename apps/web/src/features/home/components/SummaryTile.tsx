@@ -5,6 +5,7 @@ import {
   CardTitle,
   CardDescription
 } from '@budget-tracker/ui/components/ui/card'
+import { formatAmount } from '~/web/utils/currency'
 import { getUserDashboardSummary } from '../serverActions'
 
 type SummaryTileProps = {
@@ -32,15 +33,19 @@ export const SummaryTile: React.FC<SummaryTileProps> = async ({
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent>
-        <p className="text-2xl font-bold">${balance}</p>
+        <p className="text-2xl font-bold">{formatAmount(balance)}</p>
         <div className="mt-4 flex flex-wrap gap-x-4">
           <span>
             Income:{' '}
-            <span className="text-primary font-semibold">${income}</span>
+            <span className="text-primary font-semibold">
+              {formatAmount(income)}
+            </span>
           </span>
           <span>
             Expenses:{' '}
-            <span className="text-destructive font-semibold">${expense}</span>
+            <span className="text-destructive font-semibold">
+              {formatAmount(expense)}
+            </span>
           </span>
         </div>
       </CardContent>

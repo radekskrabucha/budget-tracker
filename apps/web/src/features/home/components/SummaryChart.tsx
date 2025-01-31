@@ -5,6 +5,7 @@ import {
   CardTitle,
   CardDescription
 } from '@budget-tracker/ui/components/ui/card'
+import { formatAmount } from '~/web/utils/currency'
 import { getUserDashboardSummary } from '../serverActions'
 import { Chart } from './PieChart'
 
@@ -40,15 +41,20 @@ export const SummaryChart: React.FC<SummaryChartProps> = async ({
       <CardContent className="font-semibold">
         <Chart data={chartData} />
         <p className="text-2xl">
-          Balance: <span className="font-bold">${balance}</span>
+          Balance: <span className="font-bold">{formatAmount(balance)}</span>
         </p>
         <div className="mt-4 flex flex-wrap gap-x-4">
           <span>
-            Income: <span className="text-primary font-bold">${income}</span>
+            Income:{' '}
+            <span className="text-primary font-bold">
+              {formatAmount(income)}
+            </span>
           </span>
           <span>
             Expenses:{' '}
-            <span className="text-destructive font-bold">${expense}</span>
+            <span className="text-destructive font-bold">
+              {formatAmount(expense)}
+            </span>
           </span>
         </div>
       </CardContent>

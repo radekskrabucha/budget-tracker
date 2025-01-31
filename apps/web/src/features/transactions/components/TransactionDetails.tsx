@@ -1,6 +1,7 @@
 import { format } from 'date-fns'
 import { redirect } from 'next/navigation'
 import { InternalLink } from '~/web/config/app'
+import { formatAmount } from '~/web/utils/currency'
 import { getUserTransaction } from '../serverActions'
 
 type TransactionDetailsProps = {
@@ -36,7 +37,7 @@ export const TransactionDetails: React.FC<TransactionDetailsProps> = async ({
           <span
             className={type === 'expense' ? 'text-destructive' : 'text-primary'}
           >
-            ${amount}
+            {formatAmount(amount)}
           </span>
         </div>
         <div className="flex flex-col gap-1">
