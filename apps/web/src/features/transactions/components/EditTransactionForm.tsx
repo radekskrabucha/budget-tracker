@@ -133,7 +133,7 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
                     htmlFor="expense"
                     className="font-normal"
                   >
-                    Expense
+                    Expenses
                   </Label>
                 </div>
                 <div className="flex items-center gap-2">

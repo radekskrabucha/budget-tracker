@@ -28,7 +28,7 @@ export const SummaryChart: React.FC<SummaryChartProps> = async ({
 
   const chartData = [
     { type: 'Income', value: income, fill: 'hsl(var(--primary))' },
-    { type: 'Expense', value: expense, fill: 'hsl(var(--destructive))' }
+    { type: 'Expenses', value: expense, fill: 'hsl(var(--destructive))' }
   ]
 
   return (

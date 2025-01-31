@@ -39,7 +39,7 @@ export const SummaryTile: React.FC<SummaryTileProps> = async ({
             <span className="text-primary font-semibold">${income}</span>
           </span>
           <span>
-            Expense:{' '}
+            Expenses:{' '}
             <span className="text-destructive font-semibold">${expense}</span>
           </span>
         </div>

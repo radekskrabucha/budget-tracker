@@ -17,7 +17,7 @@ const chartConfig = {
     label: 'Income'
   },
   expense: {
-    label: 'Expense'
+    label: 'Expenses'
   }
 } satisfies ChartConfig
 
