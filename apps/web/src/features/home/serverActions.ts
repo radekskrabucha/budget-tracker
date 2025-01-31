@@ -8,7 +8,7 @@ import { getHeaders } from '~/web/utils/headers'
 
 const getDashboardSummary = appClient.dashboard.summary.$get
 
-type GetDashboardSummaryReq = InferRequestType<
+export type GetDashboardSummaryReq = InferRequestType<
   typeof getDashboardSummary
 >['query']
 
