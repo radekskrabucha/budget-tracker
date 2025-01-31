@@ -39,7 +39,7 @@ export const getUserTransactions = async (
 
   const transactions = await db.query.transaction.findMany({
     where: whereClause,
-    orderBy: transaction.date,
+    orderBy: (transaction, { desc }) => [desc(transaction.date)],
     ...getPaginationParams(paginationValues),
     with: {
       category: {
