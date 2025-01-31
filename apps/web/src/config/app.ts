@@ -3,13 +3,16 @@ export const InternalLink = {
   signUp: '/sign-up',
   signIn: '/sign-in',
   transactions: '/transactions',
+  addTransaction: '/transactions/add',
+  editTransaction: (id: string) => `/transactions/${id}/edit`,
+  transactionDetails: (id: string) => `/transactions/${id}`,
   categories: '/categories',
+  addCategory: '/categories/add',
+  editCategory: (id: string) => `/categories/${id}/edit`,
   profile: '/profile',
   changePassword: '/profile/change-password',
   editProfile: '/profile/edit',
-  deleteProfile: '/profile/delete',
-  addCategory: '/categories/add',
-  editCategory: (id: string) => `/categories/${id}/edit`
+  deleteProfile: '/profile/delete'
 } as const
 
 export const ownerEmail = 'rskrabucha13@gmail.com'

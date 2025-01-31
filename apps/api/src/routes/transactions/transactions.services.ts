@@ -1,3 +1,4 @@
+import { decimalToInt, intToDecimal } from '@budget-tracker/utils'
 import { and, eq } from 'drizzle-orm'
 import { db } from '~/api/db'
 import { transaction } from '~/api/db/schema/transaction.schema'
@@ -11,6 +12,17 @@ import {
   getPaginationValues
 } from '~/api/utils/pagination'
 import type { PaginationQuery } from '~/api/utils/schemas'
+
+type TransactionWithAmount = { amount: number }
+
+const transformTransactionAmount = <T extends TransactionWithAmount>(
+  transaction: T
+): T & TransactionWithAmount => {
+  return {
+    ...transaction,
+    amount: intToDecimal(transaction.amount)
+  }
+}
 
 type TransactionFilters = {
   type?: TransactionType
@@ -27,8 +39,14 @@ export const getUserTransactions = async (
 
   const transactions = await db.query.transaction.findMany({
     where: whereClause,
-    orderBy: transaction.date,
+    orderBy: (transaction, { desc }) => [desc(transaction.date)],
     ...getPaginationParams(paginationValues),
+    columns: {
+      categoryId: false,
+      userId: false,
+      createdAt: false,
+      updatedAt: false
+    },
     with: {
       category: {
         columns: {
@@ -40,9 +58,11 @@ export const getUserTransactions = async (
     }
   })
 
+  const transformedTransactions = transactions.map(transformTransactionAmount)
+
   if (!paginationValues) {
     return {
-      data: transactions,
+      data: transformedTransactions,
       meta: undefined
     }
   }
@@ -50,7 +70,7 @@ export const getUserTransactions = async (
   const total = await db.$count(transaction, whereClause)
 
   return {
-    data: transactions,
+    data: transformedTransactions,
     meta: { ...paginationValues, total }
   }
 }
@@ -58,6 +78,11 @@ export const getUserTransactions = async (
 export const getUserTransaction = async (id: string, userId: string) => {
   const userTransaction = await db.query.transaction.findFirst({
     where: and(eq(transaction.id, id), eq(transaction.userId, userId)),
+    columns: {
+      userId: false,
+      createdAt: false,
+      updatedAt: false
+    },
     with: {
       category: {
         columns: {
@@ -69,36 +94,52 @@ export const getUserTransaction = async (id: string, userId: string) => {
     }
   })
 
-  return userTransaction
+  if (!userTransaction) {
+    return undefined
+  }
+
+  return transformTransactionAmount(userTransaction)
 }
 
 export const createUserTransaction = async (
   userId: string,
-  data: InsertTransaction
+  { amount, ...data }: InsertTransaction
 ) => {
   const [newTransaction] = await db
     .insert(transaction)
     .values({
       ...data,
+      amount: decimalToInt(amount),
       userId
     })
     .returning()
 
-  return newTransaction
+  if (!newTransaction) {
+    return undefined
+  }
+
+  return transformTransactionAmount(newTransaction)
 }
 
 export const updateUserTransaction = async (
   userId: string,
   id: string,
-  data: UpdateTransaction
+  { amount, ...data }: UpdateTransaction
 ) => {
   const [updatedTransaction] = await db
     .update(transaction)
-    .set(data)
+    .set({
+      ...data,
+      amount: amount ? decimalToInt(amount) : undefined
+    })
     .where(and(eq(transaction.id, id), eq(transaction.userId, userId)))
     .returning()
 
-  return updatedTransaction
+  if (!updatedTransaction) {
+    return undefined
+  }
+
+  return transformTransactionAmount(updatedTransaction)
 }
 
 export const deleteUserTransaction = async (userId: string, id: string) => {
@@ -107,5 +148,9 @@ export const deleteUserTransaction = async (userId: string, id: string) => {
     .where(and(eq(transaction.id, id), eq(transaction.userId, userId)))
     .returning()
 
-  return deletedTransaction
+  if (!deletedTransaction) {
+    return undefined
+  }
+
+  return transformTransactionAmount(deletedTransaction)
 }

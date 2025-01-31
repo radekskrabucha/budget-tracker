@@ -4,9 +4,9 @@ import { EditCategoryForm } from './components/EditCategoryForm'
 import { getUserCategory } from './serverActions'
 
 type EditCategoryPageProps = {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export const EditCategoryPage: React.FC<EditCategoryPageProps> = async ({

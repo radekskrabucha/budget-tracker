@@ -3,22 +3,22 @@ import { Plus } from 'lucide-react'
 import Link from 'next/link'
 import { InternalLink } from '~/web/config/app'
 
-export const CategoriesLayout = ({ children }: React.PropsWithChildren) => (
+export const TransactionsLayout = ({ children }: React.PropsWithChildren) => (
   <>
     <div className="layout-section">
       <div className="flex items-center justify-between gap-4">
         <Link
-          href={InternalLink.categories}
+          href={InternalLink.transactions}
           className="text-2xl font-semibold"
         >
-          Your categories
+          Your transactions
         </Link>
         <Link
-          href={InternalLink.addCategory}
+          href={InternalLink.addTransaction}
           className={buttonVariants()}
         >
           <Plus className="size-4" />
-          Add new category
+          Add new transaction
         </Link>
       </div>
     </div>

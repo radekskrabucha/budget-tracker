@@ -4,12 +4,19 @@ import { transaction } from '~/api/db/schema/transaction.schema'
 
 export const insertTransactionSchema = createInsertSchema(transaction, {
   categoryId: schema => schema.uuid()
-}).omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true,
-  userId: true
 })
+  .omit({
+    id: true,
+    createdAt: true,
+    updatedAt: true,
+    userId: true,
+    date: true,
+    amount: true
+  })
+  .extend({
+    date: z.coerce.date(),
+    amount: z.number()
+  })
 export const updateTransactionSchema = insertTransactionSchema.partial()
 export const selectTransactionSchema = createSelectSchema(transaction).omit({
   userId: true,

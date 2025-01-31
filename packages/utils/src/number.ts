@@ -1,6 +1,5 @@
-export const getRandomInt = (min: number, max: number) => {
-  min = Math.ceil(min)
-  max = Math.floor(max)
+export const intToDecimal = (value: number, decimals = 2) =>
+  value / Math.pow(10, decimals)
 
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
+export const decimalToInt = (value: number, decimals = 2) =>
+  Math.round(value * Math.pow(10, decimals))
