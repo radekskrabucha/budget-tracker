@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@budget-tracker/ui/components/ui/button'
-import { LoaderCircle } from '@budget-tracker/ui/components/ui/loaderCircle'
+import { LoadingCircleIndicator } from '@budget-tracker/ui/components/ui/loading-circle-indicator'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { useMutation } from '@tanstack/react-query'
 import { Trash2 } from 'lucide-react'
@@ -46,7 +46,9 @@ export const TransactionDeleteButton: React.FC<
       onClick={() => deleteTransactionMutation.mutate()}
       disabled={deleteTransactionMutation.isPending}
     >
-      {deleteTransactionMutation.isPending && <LoaderCircle className="mr-2" />}
+      {deleteTransactionMutation.isPending && (
+        <LoadingCircleIndicator className="mr-2" />
+      )}
       <Trash2 className="mr-2 h-4 w-4" />
       Delete
     </Button>

@@ -3,7 +3,7 @@
 import { Button } from '@budget-tracker/ui/components/ui/button'
 import { Input } from '@budget-tracker/ui/components/ui/input'
 import { Label } from '@budget-tracker/ui/components/ui/label'
-import { LoaderCircle } from '@budget-tracker/ui/components/ui/loaderCircle'
+import { LoadingCircleIndicator } from '@budget-tracker/ui/components/ui/loading-circle-indicator'
 import { StatusMessage } from '@budget-tracker/ui/components/ui/statusMessage'
 import { Textarea } from '@budget-tracker/ui/components/ui/textarea'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
@@ -118,7 +118,7 @@ export const AddNewCategoryForm = () => {
           disabled={createCategoryMutation.isPending}
           className="mt-2"
         >
-          {createCategoryMutation.isPending && <LoaderCircle />}
+          {createCategoryMutation.isPending && <LoadingCircleIndicator />}
           Create Category
         </Button>
       </form>
