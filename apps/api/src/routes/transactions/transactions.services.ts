@@ -1,3 +1,4 @@
+import { decimalToInt } from '@budget-tracker/utils'
 import { and, eq } from 'drizzle-orm'
 import { db } from '~/api/db'
 import { transaction } from '~/api/db/schema/transaction.schema'
@@ -74,12 +75,13 @@ export const getUserTransaction = async (id: string, userId: string) => {
 
 export const createUserTransaction = async (
   userId: string,
-  data: InsertTransaction
+  { amount, ...data }: InsertTransaction
 ) => {
   const [newTransaction] = await db
     .insert(transaction)
     .values({
       ...data,
+      amount: decimalToInt(amount),
       userId
     })
     .returning()
