@@ -23,6 +23,12 @@ export const EditTransactionPage: React.FC<
 
   return (
     <>
+      <section className="layout-section">
+        <h2 className="text-2xl font-semibold">Edit transaction</h2>
+        <p className="text-muted-foreground text-sm">
+          Edit your transaction details.
+        </p>
+      </section>
       <EditTransactionForm
         id={id}
         transaction={data.transaction}
