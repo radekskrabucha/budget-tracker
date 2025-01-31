@@ -1,7 +1,8 @@
 import { getUserTransaction } from '~/web/features/transactions/serverActions'
 
-export type TransactionWithCategory = Awaited<
-  ReturnType<typeof getUserTransaction>
+export type TransactionWithCategory = Exclude<
+  Awaited<ReturnType<typeof getUserTransaction>>,
+  undefined
 >['transaction']
 
 export type Transaction = Omit<TransactionWithCategory, 'category'>
