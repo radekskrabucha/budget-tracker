@@ -6,7 +6,7 @@ type CardProps = React.ComponentPropsWithRef<'div'>
 export const Card: React.FC<CardProps> = ({ className, ...props }) => (
   <div
     className={cn(
-      'bg-card text-card-foreground rounded-xl border shadow',
+      'bg-card text-card-foreground border-border rounded-xl border shadow',
       className
     )}
     {...props}
