@@ -7,11 +7,7 @@ const today = getNow()
 
 export const SummarySection = () => (
   <section className="layout-section">
-    <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
-      <SummaryTile
-        title="Total Balance"
-        description="Of all your transactions"
-      />
+    <div className="grid grid-cols-2 gap-6 max-lg:grid-cols-1">
       <SummaryChart
         title="This Week"
         description="Sum of all your transactions this week"
@@ -23,6 +19,10 @@ export const SummarySection = () => (
         description="Sum of all your transactions this month"
         startDate={startOfMonth(today)}
         endDate={endOfMonth(today)}
+      />
+      <SummaryTile
+        title="Total Balance"
+        description="Of all your transactions"
       />
     </div>
   </section>
