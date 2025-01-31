@@ -24,7 +24,7 @@ export const getUserTransactions = async (req: GetUserTransactionsReq) => {
   return data
 }
 
-const getUserTransactionReq = appClient.transactions[':id'].$get
+export const getUserTransactionReq = appClient.transactions[':id'].$get
 type GetUserTransactionReq = Parameters<
   typeof getUserTransactionReq
 >[0]['param']
