@@ -79,7 +79,6 @@ export const getUserTransaction = async (id: string, userId: string) => {
   const userTransaction = await db.query.transaction.findFirst({
     where: and(eq(transaction.id, id), eq(transaction.userId, userId)),
     columns: {
-      categoryId: false,
       userId: false,
       createdAt: false,
       updatedAt: false
