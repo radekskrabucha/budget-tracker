@@ -13,9 +13,9 @@ type TransactionDeleteButtonProps = {
   id: string
 }
 
-export const TransactionDeleteButton: React.FC<TransactionDeleteButtonProps> = ({
-  id
-}) => {
+export const TransactionDeleteButton: React.FC<
+  TransactionDeleteButtonProps
+> = ({ id }) => {
   const router = useRouter()
   const { toast } = useToast()
 
@@ -51,4 +51,4 @@ export const TransactionDeleteButton: React.FC<TransactionDeleteButtonProps> = (
       Delete
     </Button>
   )
-} 
+}
