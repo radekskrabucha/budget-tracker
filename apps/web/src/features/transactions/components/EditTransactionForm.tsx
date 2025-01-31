@@ -14,6 +14,13 @@ import {
   RadioGroup,
   RadioGroupItem
 } from '@budget-tracker/ui/components/ui/radio-group'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@budget-tracker/ui/components/ui/select'
 import { StatusMessage } from '@budget-tracker/ui/components/ui/statusMessage'
 import { Textarea } from '@budget-tracker/ui/components/ui/textarea'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
@@ -26,7 +33,8 @@ import { CalendarIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { InternalLink } from '~/web/config/app'
-import { Transaction } from '~/web/models/transaction'
+import { Category } from '~/web/models/category'
+import { TransactionWithCategoryId } from '~/web/models/transaction'
 import { updateUserTransaction } from '../actions'
 
 const EditTransactionFormSchema = z.object({
@@ -35,19 +43,22 @@ const EditTransactionFormSchema = z.object({
   amount: z.string().refine(value => Number(value) > 0, {
     message: 'Amount must be greater than 0'
   }),
-  description: z.string().optional()
+  description: z.string().optional(),
+  categoryId: z.string().uuid({ message: 'Category is required' })
 })
 
 type Form = z.infer<typeof EditTransactionFormSchema>
 
 type EditTransactionFormProps = {
-  transaction: Transaction
+  transaction: TransactionWithCategoryId
   id: string
+  categories: Array<Category>
 }
 
 export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
   id,
-  transaction: { amount, date, description, type }
+  transaction: { amount, date, description, type, categoryId },
+  categories
 }) => {
   const router = useRouter()
   const { toast } = useToast()
@@ -77,7 +88,8 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
       type,
       date: new Date(date),
       amount: String(amount),
-      description: description ?? undefined
+      description: description ?? undefined,
+      categoryId: categoryId ?? ''
     },
     validators: {
       onSubmit: EditTransactionFormSchema
@@ -211,6 +223,37 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
             )}
           </form.Field>
         </div>
+
+        <form.Field name="categoryId">
+          {field => (
+            <div className="flex flex-col gap-2">
+              <Label htmlFor={field.name}>Category</Label>
+              <Select
+                defaultValue={field.state.value}
+                onValueChange={field.handleChange}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+                <SelectContent>
+                  {categories.map(category => (
+                    <SelectItem
+                      key={category.id}
+                      value={category.id}
+                    >
+                      {category.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {field.state.meta.errors ? (
+                <StatusMessage variant="error">
+                  {field.state.meta.errors[0]}
+                </StatusMessage>
+              ) : null}
+            </div>
+          )}
+        </form.Field>
 
         <form.Field name="description">
           {field => (
