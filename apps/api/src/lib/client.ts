@@ -1,6 +1,10 @@
 import type { Hono } from 'hono'
 import { hc } from 'hono/client'
-import type { ClientResponse } from 'hono/client'
+import type {
+  ClientResponse,
+  InferRequestType,
+  InferResponseType
+} from 'hono/client'
 import type { SuccessStatusCode } from 'hono/utils/http-status'
 import type { appRouter, adminRouter } from '~/api/routes'
 
@@ -83,3 +87,5 @@ export async function fetchWrapper<
 
   return response.json()
 }
+
+export type { InferRequestType, InferResponseType }
