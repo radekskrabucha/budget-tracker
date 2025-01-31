@@ -37,21 +37,20 @@ export const SummaryChart: React.FC<SummaryChartProps> = async ({
         <CardTitle className="text-2xl">{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
-      <CardContent>
+      <CardContent className="font-semibold">
         <Chart data={chartData} />
-        <div className="text-muted-foreground flex items-center gap-x-4 font-medium">
-          <p>
-            Income <span className="text-primary font-semibold">${income}</span>
-          </p>
-          <p>
-            Expense{' '}
-            <span className="text-destructive font-semibold">${expense}</span>
-          </p>
-        </div>
-        <p className="text-muted-foreground text-lg font-medium">
-          Balance{' '}
-          <span className="text-card-foreground font-bold">${balance}</span>
+        <p className="text-2xl">
+          Balance: <span className="font-bold">${balance}</span>
         </p>
+        <div className="mt-4 flex flex-wrap gap-x-4">
+          <span>
+            Income: <span className="text-primary font-bold">${income}</span>
+          </span>
+          <span>
+            Expenses:{' '}
+            <span className="text-destructive font-bold">${expense}</span>
+          </span>
+        </div>
       </CardContent>
     </Card>
   )
