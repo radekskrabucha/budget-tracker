@@ -4,7 +4,7 @@ import { Button } from '@budget-tracker/ui/components/ui/button'
 import { Calendar } from '@budget-tracker/ui/components/ui/calendar'
 import { Input } from '@budget-tracker/ui/components/ui/input'
 import { Label } from '@budget-tracker/ui/components/ui/label'
-import { LoaderCircle } from '@budget-tracker/ui/components/ui/loaderCircle'
+import { LoadingCircleIndicator } from '@budget-tracker/ui/components/ui/loading-circle-indicator'
 import {
   Popover,
   PopoverContent,
@@ -133,7 +133,7 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
                     htmlFor="expense"
                     className="font-normal"
                   >
-                    Expense
+                    Expenses
                   </Label>
                 </div>
                 <div className="flex items-center gap-2">
@@ -289,7 +289,9 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
           disabled={updateUserTransactionMutation.isPending}
           className="mt-2"
         >
-          {updateUserTransactionMutation.isPending && <LoaderCircle />}
+          {updateUserTransactionMutation.isPending && (
+            <LoadingCircleIndicator />
+          )}
           Update transaction
         </Button>
       </form>

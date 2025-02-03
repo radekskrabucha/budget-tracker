@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { InternalLink } from '~/web/config/app'
 import { TransactionWithCategory } from '~/web/models/transaction'
+import { formatAmount } from '~/web/utils/currency'
 
 export const TransactionTile: React.FC<TransactionWithCategory> = ({
   id,
@@ -27,7 +28,7 @@ export const TransactionTile: React.FC<TransactionWithCategory> = ({
         <span
           className={`font-medium ${type === 'expense' ? 'text-destructive' : 'text-primary'}`}
         >
-          ${amount}
+          {formatAmount(amount)}
         </span>
       </div>
       <div className="flex flex-col">
