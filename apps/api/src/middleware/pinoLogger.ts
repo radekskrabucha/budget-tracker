@@ -7,7 +7,12 @@ export const pinoLogger = () =>
   logger({
     pino: pino(
       {
-        level: env.LOG_LEVEL || 'info'
+        level: env.LOG_LEVEL || 'info',
+        formatters: {
+          level(label) {
+            return { level: label }
+          }
+        }
       },
       env.NODE_ENV === 'production' ? undefined : pretty()
     ),
