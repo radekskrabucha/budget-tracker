@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://budget-tracker-production-6d9c.up.railway.app/$1"
+    }
+  ]
+}
