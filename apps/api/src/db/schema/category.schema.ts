@@ -1,12 +1,18 @@
 import { relations } from 'drizzle-orm'
-import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+import { pgEnum, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { user } from './auth.schema'
 import { transaction } from './transaction.schema'
+
+export const categoryTypeEnum = pgEnum('category_type', [
+  'income',
+  'expense'
+])
 
 export const category = pgTable('category', {
   id: uuid('id').defaultRandom().primaryKey(),
   name: text('name').notNull(),
   description: text('description').notNull(),
+  type: categoryTypeEnum('type'),
   userId: uuid('user_id').references(() => user.id, {
     onDelete: 'cascade'
   }),
