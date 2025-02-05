@@ -12,7 +12,7 @@ export const category = pgTable('category', {
   id: uuid('id').defaultRandom().primaryKey(),
   name: text('name').notNull(),
   description: text('description').notNull(),
-  type: categoryTypeEnum('type'),
+  type: categoryTypeEnum('type').notNull(),
   userId: uuid('user_id').references(() => user.id, {
     onDelete: 'cascade'
   }),
