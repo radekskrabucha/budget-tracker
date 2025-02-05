@@ -11,6 +11,7 @@ import type { AppBindings } from '~/api/types/app'
 import { env } from '~/api/utils/env'
 
 export const app = new Hono<AppBindings>()
+  .basePath('/api')
   .use(pinoLogger())
   .use(
     '*',
@@ -24,7 +25,7 @@ export const app = new Hono<AppBindings>()
 app.route('/', adminRouter)
 app.route('/', appRouter)
 
-app.on(['POST', 'GET'], '/api/auth/*', c => auth.handler(c.req.raw))
+app.on(['POST', 'GET'], '/auth/*', c => auth.handler(c.req.raw))
 
 app.use('/favicon.ico', serveEmojiFavicon('💸'))
 
