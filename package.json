@@ -15,9 +15,7 @@
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "type-check": "turbo type-check",
-    "test": "turbo test",
-    "build:api": "pnpm --filter @budget-tracker/api build",
-    "start:api": "pnpm --filter @budget-tracker/api start"
+    "test": "turbo test"
   },
   "dependencies": {
     "better-auth": "1.1.15",
