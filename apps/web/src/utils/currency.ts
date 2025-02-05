@@ -1,5 +1,5 @@
 export const formatAmount = (amount: number, currency = '$') => {
-  return `${currency}${formatAmountWithSeparator(amount, ' ', 2)}`
+  return `${formatAmountWithSeparator(amount, ' ', 2)}${currency}`
 }
 
 export const formatAmountWithSeparator = (
