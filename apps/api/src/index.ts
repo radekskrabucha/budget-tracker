@@ -10,13 +10,16 @@ import { adminRouter, appRouter } from '~/api/routes'
 import type { AppBindings } from '~/api/types/app'
 import { env } from '~/api/utils/env'
 
-export const app = new Hono<AppBindings>().use(pinoLogger()).use(
-  '*',
-  cors({
-    origin: env.BETTER_AUTH_TRUSTED_ORIGINS,
-    credentials: true
-  })
-)
+export const app = new Hono<AppBindings>()
+  .use(pinoLogger())
+  .use(
+    '*',
+    cors({
+      origin: env.BETTER_AUTH_TRUSTED_ORIGINS,
+      credentials: true
+    })
+  )
+  .get('/health-check', c => c.json({ status: 'ok' }))
 
 app.route('/', adminRouter)
 app.route('/', appRouter)
