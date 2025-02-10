@@ -7,9 +7,9 @@ import { TransactionType } from '~/web/models/transaction'
 import { AddTransactionForm } from './components/AddTransactionForm'
 
 type AddTransactionPageProps = {
-  searchParams: {
+  searchParams: Promise<{
     type?: TransactionType
-  }
+  }>
 }
 
 export const AddTransactionPage = async ({
