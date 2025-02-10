@@ -17,10 +17,22 @@ export const AppLayout: React.FC<React.PropsWithChildren> = async ({
   }
 
   return (
-    <div className="layout-container min-h-dvh !flex-row">
+    <div className="layout-container min-h-dvh !flex-row max-md:!flex-col">
+      {/* Mobile Header */}
+      <header className="border-border bg-card flex-start sticky top-0 z-10 flex border-b p-6 md:hidden">
+        <Link
+          href={InternalLink.home}
+          className="flex items-center gap-3 transition-opacity hover:opacity-80"
+        >
+          <Logo />
+          <span className="text-lg font-semibold">{appName}</span>
+        </Link>
+      </header>
+
       {/* Sidebar */}
-      <aside className="border-border text-card-foreground bg-card flex w-64 flex-col border-r">
-        <div className="border-border border-b p-6">
+      <aside className="border-border text-card-foreground bg-card sticky top-0 z-10 flex h-dvh w-64 flex-col border-r max-md:fixed max-md:top-auto max-md:right-0 max-md:bottom-0 max-md:left-0 max-md:h-auto max-md:w-full max-md:border-t max-md:border-r-0">
+        {/* Desktop Logo */}
+        <div className="border-border border-b p-6 max-md:hidden">
           <Link
             href={InternalLink.home}
             className="flex items-center gap-3 transition-opacity hover:opacity-80"
@@ -30,7 +42,7 @@ export const AppLayout: React.FC<React.PropsWithChildren> = async ({
           </Link>
         </div>
 
-        <nav className="flex-1 p-4">
+        <nav className="flex-1 p-4 max-md:hidden">
           <div className="px-2 py-4">
             <h2 className="text-muted-foreground text-lg font-semibold">
               Welcome, {session.user.name}
@@ -60,13 +72,42 @@ export const AppLayout: React.FC<React.PropsWithChildren> = async ({
           </ul>
         </nav>
 
-        <div className="border-border border-t p-4">
+        {/* Mobile Navigation */}
+        <nav className="md:hidden">
+          <ul className="flex items-center justify-around p-4">
+            <NavItem
+              href={InternalLink.home}
+              label="Home"
+              icon={Home}
+            />
+            <NavItem
+              href={InternalLink.transactions}
+              label="Transactions"
+              icon={Wallet}
+            />
+            <NavItem
+              href={InternalLink.categories}
+              label="Categories"
+              icon={LayoutDashboard}
+            />
+            <NavItem
+              href={InternalLink.profile}
+              label="Profile"
+              icon={User}
+            />
+          </ul>
+        </nav>
+
+        {/* Desktop Sign Out */}
+        <div className="border-border border-t p-4 max-md:hidden">
           <SignOutButton />
         </div>
       </aside>
 
       {/* Main content */}
-      <main className="isolate flex flex-1 flex-col">{children}</main>
+      <main className="isolate flex flex-1 flex-col max-md:pb-24">
+        {children}
+      </main>
     </div>
   )
 }
