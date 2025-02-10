@@ -30,4 +30,6 @@ export const selectCategoryTypeSchema = selectCategorySchema.pick({
   type: true
 })
 
-export type SelectCategoryType = z.infer<typeof selectCategoryTypeSchema>
+export type SelectCategoryType = z.infer<
+  typeof selectCategoryTypeSchema
+>['type']
