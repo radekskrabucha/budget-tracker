@@ -29,12 +29,11 @@ export const SignOutButton = () => {
 
   return (
     <Button
-      variant="ghost"
-      className="hover:bg-muted hover:text-muted-foreground w-full justify-start gap-3"
+      variant="destructive"
       onClick={() => signOutMutation.mutate()}
       disabled={signOutMutation.isPending}
     >
-      <LogOut className="size-5" />
+      <LogOut className="size-4" />
       <span>Sign out</span>
     </Button>
   )

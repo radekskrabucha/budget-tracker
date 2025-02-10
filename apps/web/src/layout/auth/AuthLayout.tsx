@@ -49,12 +49,12 @@ export const AuthLayout: React.FC<React.PropsWithChildren> = async ({
             <div className="flex flex-wrap items-center justify-center gap-4">
               <IconLink
                 href={ExternalLink.github}
-                icon={<Github className="h-5 w-5" />}
+                icon={<Github className="size-5" />}
                 label="GitHub"
               />
               <IconLink
                 href={ExternalLink.sourceCode}
-                icon={<Code2 className="h-5 w-5" />}
+                icon={<Code2 className="size-5" />}
                 label="Source Code"
               />
 
