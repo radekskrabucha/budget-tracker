@@ -34,7 +34,7 @@ export const SignOutButton = () => {
       onClick={() => signOutMutation.mutate()}
       disabled={signOutMutation.isPending}
     >
-      <LogOut className="h-5 w-5" />
+      <LogOut className="size-5" />
       <span>Sign out</span>
     </Button>
   )
