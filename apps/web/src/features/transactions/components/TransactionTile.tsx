@@ -18,11 +18,11 @@ export const TransactionTile: React.FC<TransactionWithCategory> = ({
   <Link
     href={InternalLink.transactionDetails(id)}
     className={cx(
-      'border-border bg-card flex items-center gap-4 rounded-lg border p-4 shadow-sm transition-colors',
+      'border-border bg-card flex items-center gap-4 rounded-lg border p-4 shadow-sm transition-colors max-md:flex-col max-md:items-stretch',
       type === 'expense' ? 'hover:border-destructive' : 'hover:border-primary'
     )}
   >
-    <div className="flex flex-1 items-center gap-4">
+    <div className="flex flex-1 items-center gap-4 max-md:flex-col max-md:items-start">
       <div className="flex flex-col">
         <span className="text-muted-foreground text-sm capitalize">{type}</span>
         <span
@@ -44,10 +44,12 @@ export const TransactionTile: React.FC<TransactionWithCategory> = ({
         )}
       </div>
     </div>
-    <div className="text-muted-foreground text-sm">{format(date, 'PPP')}</div>
-    <div className={buttonVariants({ variant: 'ghost', size: 'sm' })}>
-      <span className="mr-2">Details</span>
-      <ArrowRight className="size-4" />
+    <div className="flex flex-wrap items-center gap-2 max-md:justify-between">
+      <div className="text-muted-foreground text-sm">{format(date, 'PPP')}</div>
+      <div className={buttonVariants({ variant: 'ghost', size: 'sm' })}>
+        <span className="mr-2">Details</span>
+        <ArrowRight className="size-4" />
+      </div>
     </div>
   </Link>
 )

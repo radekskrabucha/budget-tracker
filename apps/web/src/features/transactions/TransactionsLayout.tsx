@@ -6,7 +6,7 @@ import { InternalLink } from '~/web/config/app'
 export const TransactionsLayout = ({ children }: React.PropsWithChildren) => (
   <>
     <div className="layout-section">
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-4">
         <Link
           href={InternalLink.transactions}
           className="text-2xl font-semibold"
