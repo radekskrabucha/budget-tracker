@@ -3,10 +3,7 @@ import { pgEnum, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { user } from './auth.schema'
 import { transaction } from './transaction.schema'
 
-export const categoryTypeEnum = pgEnum('category_type', [
-  'income',
-  'expense'
-])
+export const categoryTypeEnum = pgEnum('category_type', ['income', 'expense'])
 
 export const category = pgTable('category', {
   id: uuid('id').defaultRandom().primaryKey(),
