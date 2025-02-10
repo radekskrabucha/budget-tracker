@@ -2,6 +2,7 @@ import { zValidator } from '@hono/zod-validator'
 import { Hono } from 'hono'
 import {
   insertCategorySchema,
+  selectCategoryTypeSchema,
   updateCategorySchema
 } from '~/api/lib/dbZodSchema/category'
 import { authMiddleware } from '~/api/middleware/auth'
@@ -25,14 +26,18 @@ export const categoriesRouter = new Hono<AppBindings>()
 
     return c.json({ categories }, OK)
   })
-  .get('/combined', async c => {
-    const user = c.get('user')
-    const { search } = c.req.query()
+  .get(
+    '/combined',
+    zValidator('query', selectCategoryTypeSchema.optional()),
+    async c => {
+      const user = c.get('user')
+      const query = c.req.valid('query')
 
-    const categories = await getCombinedCategories(user.id, search)
+      const categories = await getCombinedCategories(user.id, query?.type)
 
-    return c.json({ categories }, OK)
-  })
+      return c.json({ categories }, OK)
+    }
+  )
   .get('/:id', async c => {
     const user = c.get('user')
     const { id } = c.req.param()
@@ -47,7 +52,7 @@ export const categoriesRouter = new Hono<AppBindings>()
   })
   .post('/', zValidator('json', insertCategorySchema), async c => {
     const user = c.get('user')
-    const data = await c.req.valid('json')
+    const data = c.req.valid('json')
 
     const category = await createUserCategory(user.id, data)
 
@@ -60,7 +65,7 @@ export const categoriesRouter = new Hono<AppBindings>()
   .put('/:id', zValidator('json', updateCategorySchema), async c => {
     const user = c.get('user')
     const { id } = c.req.param()
-    const data = await c.req.valid('json')
+    const data = c.req.valid('json')
 
     const category = await updateUserCategory(user.id, id, data)
 

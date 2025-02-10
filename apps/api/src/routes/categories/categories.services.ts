@@ -1,8 +1,9 @@
-import { and, eq, ilike, isNull, or } from 'drizzle-orm'
+import { and, eq, isNull, or } from 'drizzle-orm'
 import { db } from '~/api/db'
 import { category } from '~/api/db/schema/category.schema'
 import type {
   InsertCategory,
+  SelectCategoryType,
   UpdateCategory
 } from '~/api/lib/dbZodSchema/category'
 
@@ -73,12 +74,12 @@ export const deleteUserCategory = async (userId: string, id: string) => {
 
 export const getCombinedCategories = async (
   userId: string,
-  search?: string
+  type?: SelectCategoryType
 ) => {
-  const whereClause = search
+  const whereClause = type
     ? or(
-        and(eq(category.userId, userId), ilike(category.name, `%${search}%`)),
-        and(isNull(category.userId), ilike(category.name, `%${search}%`))
+        and(eq(category.userId, userId), eq(category.type, type)),
+        and(isNull(category.userId), eq(category.type, type))
       )
     : or(eq(category.userId, userId), isNull(category.userId))
 
