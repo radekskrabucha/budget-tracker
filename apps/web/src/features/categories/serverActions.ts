@@ -1,6 +1,6 @@
 'use server'
 
-import { ApiError, fetchWrapper } from '@budget-tracker/api'
+import { ApiError, fetchWrapper, InferRequestType } from '@budget-tracker/api'
 import { appClient } from '~/web/lib/client'
 import { getHeaders } from '~/web/utils/headers'
 
@@ -39,11 +39,24 @@ export const getUserCategory = async (id: string) => {
   }
 }
 
-export const getUserCombinedCategories = async () => {
+const getUserCombinedCategoriesReq = appClient.categories.combined.$get
+
+type GetUserCombinedCategoriesReq = InferRequestType<
+  typeof getUserCombinedCategoriesReq
+>['query']
+
+export const getUserCombinedCategories = async (
+  req?: GetUserCombinedCategoriesReq
+) => {
   const data = await fetchWrapper(
-    appClient.categories.combined.$get(undefined, {
-      headers: await getHeaders()
-    })
+    getUserCombinedCategoriesReq(
+      {
+        query: req
+      },
+      {
+        headers: await getHeaders()
+      }
+    )
   )
 
   return data
