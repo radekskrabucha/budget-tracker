@@ -11,10 +11,6 @@ import {
   PopoverTrigger
 } from '@budget-tracker/ui/components/ui/popover'
 import {
-  RadioGroup,
-  RadioGroupItem
-} from '@budget-tracker/ui/components/ui/radio-group'
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -35,6 +31,7 @@ import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { InternalLink } from '~/web/config/app'
 import { Category } from '~/web/models/category'
+import { TransactionType } from '~/web/models/transaction'
 import { createUserTransaction } from '../actions'
 
 const addTransactionFormSchema = z.object({
@@ -51,10 +48,12 @@ type Form = z.infer<typeof addTransactionFormSchema>
 
 type AddTransactionFormProps = {
   categories: Array<Category>
+  type: TransactionType
 }
 
 export const AddTransactionForm: React.FC<AddTransactionFormProps> = ({
-  categories
+  categories,
+  type
 }) => {
   const router = useRouter()
   const { toast } = useToast()
@@ -81,7 +80,7 @@ export const AddTransactionForm: React.FC<AddTransactionFormProps> = ({
 
   const form = useForm<Form, ZodValidator>({
     defaultValues: {
-      type: 'expense',
+      type,
       // @ts-expect-error it expects Date, but initial value is undefined
       date: undefined,
       amount: '',
@@ -109,49 +108,6 @@ export const AddTransactionForm: React.FC<AddTransactionFormProps> = ({
         className="flex w-full max-w-md flex-col gap-5"
         noValidate
       >
-        <form.Field name="type">
-          {field => (
-            <div className="flex flex-col gap-2">
-              <Label>Type</Label>
-              <RadioGroup
-                value={field.state.value}
-                onValueChange={field.handleChange}
-                className="flex gap-4"
-              >
-                <div className="flex items-center gap-2">
-                  <RadioGroupItem
-                    value="expense"
-                    id="expense"
-                  />
-                  <Label
-                    htmlFor="expense"
-                    className="font-normal"
-                  >
-                    Expenses
-                  </Label>
-                </div>
-                <div className="flex items-center gap-2">
-                  <RadioGroupItem
-                    value="income"
-                    id="income"
-                  />
-                  <Label
-                    htmlFor="income"
-                    className="font-normal"
-                  >
-                    Income
-                  </Label>
-                </div>
-              </RadioGroup>
-              {field.state.meta.errors ? (
-                <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
-                </StatusMessage>
-              ) : null}
-            </div>
-          )}
-        </form.Field>
-
         <div className="flex flex-wrap gap-4">
           <form.Field name="date">
             {field => (

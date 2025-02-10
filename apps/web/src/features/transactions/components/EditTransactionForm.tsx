@@ -11,10 +11,6 @@ import {
   PopoverTrigger
 } from '@budget-tracker/ui/components/ui/popover'
 import {
-  RadioGroup,
-  RadioGroupItem
-} from '@budget-tracker/ui/components/ui/radio-group'
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -115,49 +111,6 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
         className="flex w-full max-w-md flex-col gap-5"
         noValidate
       >
-        <form.Field name="type">
-          {field => (
-            <div className="flex flex-col gap-2">
-              <Label>Type</Label>
-              <RadioGroup
-                value={field.state.value}
-                onValueChange={field.handleChange}
-                className="flex gap-4"
-              >
-                <div className="flex items-center gap-2">
-                  <RadioGroupItem
-                    value="expense"
-                    id="expense"
-                  />
-                  <Label
-                    htmlFor="expense"
-                    className="font-normal"
-                  >
-                    Expenses
-                  </Label>
-                </div>
-                <div className="flex items-center gap-2">
-                  <RadioGroupItem
-                    value="income"
-                    id="income"
-                  />
-                  <Label
-                    htmlFor="income"
-                    className="font-normal"
-                  >
-                    Income
-                  </Label>
-                </div>
-              </RadioGroup>
-              {field.state.meta.errors ? (
-                <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
-                </StatusMessage>
-              ) : null}
-            </div>
-          )}
-        </form.Field>
-
         <div className="flex flex-wrap gap-4">
           <form.Field name="date">
             {field => (
