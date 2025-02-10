@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import { getUserCombinedCategories } from '~/web/features/categories/serverActions'
 import { EditTransactionForm } from './components/EditTransactionForm'
 import { getUserTransaction } from './serverActions'
@@ -16,10 +17,12 @@ export const EditTransactionPage: React.FC<
   const data = await getUserTransaction({ id })
 
   if (!data) {
-    return <div>Transaction not found</div>
+    return notFound()
   }
 
-  const categoriesData = await getUserCombinedCategories()
+  const categoriesData = await getUserCombinedCategories({
+    type: data.transaction.type
+  })
 
   return (
     <>
