@@ -33,7 +33,7 @@ export const SummaryChart: React.FC<SummaryChartProps> = async ({
   ]
 
   return (
-    <Card>
+    <Card className="max-lg:col-span-full">
       <CardHeader>
         <CardTitle className="text-2xl">{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}

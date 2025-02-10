@@ -27,7 +27,7 @@ export const SummaryTile: React.FC<SummaryTileProps> = async ({
   })
 
   return (
-    <Card className="col-span-2">
+    <Card className="col-span-full">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
