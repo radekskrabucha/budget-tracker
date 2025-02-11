@@ -2,6 +2,9 @@
 
 A modern, full-stack, monorepo web application for personal finance management. Track your income and expenses, categorize transactions, and visualize your spending patterns with intuitive charts and summaries.
 
+
+[🌐 Visit the app](https://bdgt-trckr.vercel.app/)
+
 ## Tech Stack
 
 ### Frontend
