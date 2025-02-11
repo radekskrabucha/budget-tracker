@@ -12,9 +12,9 @@ type AddTransactionPageProps = {
   }>
 }
 
-export const AddTransactionPage = async ({
+export const AddTransactionPage: React.FC<AddTransactionPageProps> = async ({
   searchParams
-}: AddTransactionPageProps) => {
+}) => {
   const query = await searchParams
   const type = query.type ?? 'expense'
   const data = await getUserCombinedCategories({ type })
