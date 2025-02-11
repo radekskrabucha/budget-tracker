@@ -1,7 +1,7 @@
 'use client'
 
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer
 } from '@budget-tracker/ui/components/ui/chart'
 import { Pie, PieChart } from 'recharts'

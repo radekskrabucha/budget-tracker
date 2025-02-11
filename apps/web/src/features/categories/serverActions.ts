@@ -1,6 +1,10 @@
 'use server'
 
-import { ApiError, fetchWrapper, InferRequestType } from '@budget-tracker/api'
+import {
+  ApiError,
+  fetchWrapper,
+  type InferRequestType
+} from '@budget-tracker/api'
 import { appClient } from '~/web/lib/client'
 import { getHeaders } from '~/web/utils/headers'
 

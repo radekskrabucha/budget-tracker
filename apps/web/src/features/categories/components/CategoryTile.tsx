@@ -3,7 +3,7 @@ import { buttonVariants } from '@budget-tracker/ui/components/ui/button'
 import { Pencil } from 'lucide-react'
 import Link from 'next/link'
 import { InternalLink } from '~/web/config/app'
-import { Category } from '~/web/models/category'
+import type { Category } from '~/web/models/category'
 import { CategoryDeleteButton } from './CategoryDeleteButton'
 
 export const CategoryTile: React.FC<Category> = ({

@@ -1,5 +1,5 @@
 import {
-  ButtonProps,
+  type ButtonProps,
   buttonVariants
 } from '@budget-tracker/ui/components/ui/button'
 import { cn } from '@budget-tracker/ui/utils/styles'

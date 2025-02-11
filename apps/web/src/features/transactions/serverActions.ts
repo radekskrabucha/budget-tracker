@@ -3,8 +3,8 @@
 import {
   ApiError,
   fetchWrapper,
-  InferRequestType,
-  InferResponseType
+  type InferRequestType,
+  type InferResponseType
 } from '@budget-tracker/api'
 import { appClient } from '~/web/lib/client'
 import { getHeaders } from '~/web/utils/headers'

@@ -4,7 +4,7 @@ import { format } from 'date-fns'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { InternalLink } from '~/web/config/app'
-import { TransactionWithCategory } from '~/web/models/transaction'
+import type { TransactionWithCategory } from '~/web/models/transaction'
 import { formatAmount } from '~/web/utils/currency'
 
 export const TransactionTile: React.FC<TransactionWithCategory> = ({

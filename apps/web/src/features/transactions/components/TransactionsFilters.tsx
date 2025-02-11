@@ -1,7 +1,7 @@
 import { buttonVariants } from '@budget-tracker/ui/components/ui/button'
 import Link from 'next/link'
 import { InternalLink } from '~/web/config/app'
-import { TransactionType } from '~/web/models/transaction'
+import type { TransactionType } from '~/web/models/transaction'
 
 type TransactionsFiltersProps = {
   type: TransactionType | undefined
