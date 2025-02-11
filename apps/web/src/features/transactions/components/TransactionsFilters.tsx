@@ -9,20 +9,19 @@ type TransactionsFiltersProps = {
 
 export const TransactionsFilters: React.FC<TransactionsFiltersProps> = ({
   type
-}) => {
-  return (
-    <section className="layout-section !flex-row items-end justify-end gap-4">
-      <FilterButton
-        type="expense"
-        selectedType={type}
-      />
-      <FilterButton
-        type="income"
-        selectedType={type}
-      />
-    </section>
-  )
-}
+}) => (
+  <section className="layout-section !flex-row flex-wrap items-center justify-end gap-4">
+    <span className="text-muted-foreground text-sm">Filter by:</span>
+    <FilterButton
+      type="expense"
+      selectedType={type}
+    />
+    <FilterButton
+      type="income"
+      selectedType={type}
+    />
+  </section>
+)
 
 type FilterButtonProps = {
   type: TransactionType
