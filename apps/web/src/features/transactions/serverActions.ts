@@ -1,6 +1,6 @@
 'use server'
 
-import { ApiError, fetchWrapper, InferRequestType } from '@budget-tracker/api'
+import { ApiError, fetchWrapper, InferRequestType, InferResponseType } from '@budget-tracker/api'
 import { appClient } from '~/web/lib/client'
 import { getHeaders } from '~/web/utils/headers'
 
@@ -8,6 +8,10 @@ const getUserTransactionsReq = appClient.transactions.$get
 type GetUserTransactionsReq = InferRequestType<
   typeof getUserTransactionsReq
 >['query']
+
+export type GetUserTransactionsRes = InferResponseType<
+  typeof getUserTransactionsReq
+>
 
 export const getUserTransactions = async (req: GetUserTransactionsReq) => {
   const data = await fetchWrapper(
