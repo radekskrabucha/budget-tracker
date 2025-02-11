@@ -15,7 +15,7 @@ A modern, full-stack, monorepo web application for personal finance management. 
 ### Backend
 - [Hono](https://hono.dev/) - Lightweight, ultrafast web framework
 - [Drizzle ORM](https://orm.drizzle.team/) - TypeScript ORM
-- [Better Auth](https://better-auth.dev/) - Authentication solution
+- [Better Auth](https://www.better-auth.com/) - Authentication solution
 - [Zod](https://zod.dev/) - Schema validation
 
 ### Infrastructure
