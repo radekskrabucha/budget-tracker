@@ -13,11 +13,11 @@ import { Textarea } from '@budget-tracker/ui/components/ui/textarea'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { useForm } from '@tanstack/react-form'
 import { useMutation } from '@tanstack/react-query'
-import { ZodValidator } from '@tanstack/zod-form-adapter'
+import type { ZodValidator } from '@tanstack/zod-form-adapter'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { InternalLink } from '~/web/config/app'
-import { Category } from '~/web/models/category'
+import type { Category } from '~/web/models/category'
 import { updateCategory } from '../actions'
 
 const editCategoryFormSchema = z.object({

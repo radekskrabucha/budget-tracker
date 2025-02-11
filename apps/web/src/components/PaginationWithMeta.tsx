@@ -8,7 +8,7 @@ import {
   PaginationEllipsis
 } from '~/web/components/Pagination'
 import { InternalLink } from '~/web/config/app'
-import { PaginationMeta } from '~/web/types/pagination'
+import type { PaginationMeta } from '~/web/types/pagination'
 
 type PaginationWithMetaProps = PaginationMeta & {
   getQuery: (page: number) => Record<string, string>

@@ -1,7 +1,7 @@
 import {
   fetchWrapper,
-  InferResponseType,
-  InferRequestType
+  type InferResponseType,
+  type InferRequestType
 } from '@budget-tracker/api'
 import { appClient } from '~/web/lib/client'
 import { getHeaders } from '~/web/utils/headers'

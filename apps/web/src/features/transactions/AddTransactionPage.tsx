@@ -3,7 +3,7 @@ import { Label } from '@budget-tracker/ui/components/ui/label'
 import Link from 'next/link'
 import { InternalLink } from '~/web/config/app'
 import { getUserCombinedCategories } from '~/web/features/categories/serverActions'
-import { TransactionType } from '~/web/models/transaction'
+import type { TransactionType } from '~/web/models/transaction'
 import { AddTransactionForm } from './components/AddTransactionForm'
 
 type AddTransactionPageProps = {

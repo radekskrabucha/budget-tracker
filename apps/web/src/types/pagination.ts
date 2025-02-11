@@ -1,4 +1,4 @@
-import { GetUserTransactionsRes } from '~/web/features/transactions/serverActions'
+import type { GetUserTransactionsRes } from '~/web/features/transactions/serverActions'
 
 export type PaginationMeta = Extract<
   GetUserTransactionsRes,
