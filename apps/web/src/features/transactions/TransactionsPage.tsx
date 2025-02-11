@@ -17,7 +17,7 @@ type TransactionsPageProps = {
   }>
 }
 
-const LIMIT = 1
+const LIMIT = 10
 
 export const TransactionsPage: React.FC<TransactionsPageProps> = async ({
   searchParams
@@ -52,7 +52,6 @@ export const TransactionsPage: React.FC<TransactionsPageProps> = async ({
   return (
     <>
       <TransactionsFilters type={query.type} />
-      <pre>{JSON.stringify(meta, null, 2)}</pre>
       <section className="layout-section">
         <div className="flex flex-col gap-4">
           {data.map(transaction => (
