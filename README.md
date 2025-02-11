@@ -25,6 +25,16 @@ A modern, full-stack, monorepo web application for personal finance management. 
 - [Railway](https://railway.app/) - Backend deployment
 - [Vercel](https://vercel.com/) - Frontend deployment
 
+## Project Structure
+
+    budget-tracker
+    ├── apps
+    |   ├── api # Backend application
+    |   └── web # Frontend application
+    └── packages
+        ├── ui # Shared UI components
+        └── utils # Shared utilities
+
 ## Getting Started
 
 ### Prerequisites
@@ -68,13 +78,3 @@ pnpm dev
 The application will be available at:
 - Frontend: http://localhost:3000
 - Backend: http://localhost:4000
-
-## Project Structure
-
-budget-tracker
-├── apps
-|   ├── api # Backend application
-|   └── web # Frontend application
-└── packages
-    ├── ui # Shared UI components
-    └── utils # Shared utilities
