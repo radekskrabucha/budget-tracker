@@ -18,7 +18,7 @@
     "test": "turbo test"
   },
   "dependencies": {
-    "better-auth": "1.1.16",
+    "better-auth": "1.1.18",
     "class-variance-authority": "0.7.1",
     "date-fns": "4.1.0",
     "lucide-react": "0.475.0",
