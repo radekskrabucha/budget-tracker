@@ -16,16 +16,16 @@
     "@budget-tracker/ui": "workspace:*",
     "@budget-tracker/utils": "workspace:*",
     "@tanstack/react-form": "0.42.0",
-    "@tanstack/react-query": "5.66.4",
-    "@tanstack/zod-form-adapter": "0.42.0",
+    "@tanstack/react-query": "5.66.9",
+    "@tanstack/zod-form-adapter": "0.42.1",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.2.0",
+    "@eslint/eslintrc": "3.3.0",
     "@t3-oss/env-nextjs": "0.12.0",
     "@types/react-dom": "19.0.4",
-    "babel-plugin-react-compiler": "19.0.0-beta-714736e-20250131",
+    "babel-plugin-react-compiler": "19.0.0-beta-e1e972c-20250221",
     "eslint-config-next": "15.1.7",
-    "postcss": "8.5.2"
+    "postcss": "8.5.3"
   }
 }
