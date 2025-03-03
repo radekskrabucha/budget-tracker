@@ -8,7 +8,6 @@ import { StatusMessage } from '@budget-tracker/ui/components/ui/statusMessage'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { useForm } from '@tanstack/react-form'
 import { useMutation } from '@tanstack/react-query'
-import type { ZodValidator } from '@tanstack/zod-form-adapter'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { InternalLink } from '~/web/config/app'
@@ -17,8 +16,6 @@ import { updateProfile } from '../actions'
 const editProfileSchema = z.object({
   name: z.string().min(1, 'Name is required')
 })
-
-type Form = z.infer<typeof editProfileSchema>
 
 type EditProfileFormProps = {
   name: string
@@ -48,7 +45,7 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({ name }) => {
     }
   })
 
-  const form = useForm<Form, ZodValidator>({
+  const form = useForm({
     defaultValues: {
       name
     },
@@ -86,7 +83,7 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({ name }) => {
               />
               {field.state.meta.errors ? (
                 <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
+                  {field.state.meta.errors[0]?.message}
                 </StatusMessage>
               ) : null}
             </div>

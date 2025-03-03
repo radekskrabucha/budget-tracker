@@ -23,7 +23,6 @@ import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { cn } from '@budget-tracker/ui/utils/styles'
 import { useForm } from '@tanstack/react-form'
 import { useMutation } from '@tanstack/react-query'
-import type { ZodValidator } from '@tanstack/zod-form-adapter'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -40,11 +39,9 @@ const EditTransactionFormSchema = z.object({
   amount: z.string().refine(value => Number(value) > 0, {
     message: 'Amount must be greater than 0'
   }),
-  description: z.string().optional(),
+  description: z.string(),
   categoryId: z.string().uuid({ message: 'Category is required' })
 })
-
-type Form = z.infer<typeof EditTransactionFormSchema>
 
 type EditTransactionFormProps = {
   transaction: TransactionWithCategoryId
@@ -80,12 +77,12 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
     }
   })
 
-  const form = useForm<Form, ZodValidator>({
+  const form = useForm({
     defaultValues: {
       type,
       date: new Date(date),
       amount: String(amount),
-      description: description ?? undefined,
+      description: description ?? '',
       categoryId: categoryId ?? ''
     },
     validators: {
@@ -146,7 +143,7 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
                 </Popover>
                 {field.state.meta.errors ? (
                   <StatusMessage variant="error">
-                    {field.state.meta.errors[0]}
+                    {field.state.meta.errors[0]?.message}
                   </StatusMessage>
                 ) : null}
               </div>
@@ -170,7 +167,7 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
                 />
                 {field.state.meta.errors ? (
                   <StatusMessage variant="error">
-                    {field.state.meta.errors[0]}
+                    {field.state.meta.errors[0]?.message}
                   </StatusMessage>
                 ) : null}
               </div>
@@ -208,7 +205,7 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
               </span>
               {field.state.meta.errors ? (
                 <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
+                  {field.state.meta.errors[0]?.message}
                 </StatusMessage>
               ) : null}
             </div>
@@ -230,7 +227,7 @@ export const EditTransactionForm: React.FC<EditTransactionFormProps> = ({
               />
               {field.state.meta.errors ? (
                 <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
+                  {field.state.meta.errors[0]?.message}
                 </StatusMessage>
               ) : null}
             </div>

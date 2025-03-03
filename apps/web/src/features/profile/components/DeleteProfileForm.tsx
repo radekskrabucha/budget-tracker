@@ -8,7 +8,6 @@ import { StatusMessage } from '@budget-tracker/ui/components/ui/statusMessage'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { useForm } from '@tanstack/react-form'
 import { useMutation } from '@tanstack/react-query'
-import type { ZodValidator } from '@tanstack/zod-form-adapter'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { InternalLink } from '~/web/config/app'
@@ -24,10 +23,6 @@ const deleteProfileSchema = z
     message: `Please type "${CONFIRMATION_TEXT}" exactly as it is`,
     path: ['confirmation']
   })
-
-type Form = {
-  confirmation: string
-}
 
 export const DeleteProfileForm = () => {
   const router = useRouter()
@@ -53,7 +48,7 @@ export const DeleteProfileForm = () => {
     }
   })
 
-  const form = useForm<Form, ZodValidator>({
+  const form = useForm({
     defaultValues: {
       confirmation: ''
     },
@@ -98,7 +93,7 @@ export const DeleteProfileForm = () => {
               />
               {field.state.meta.errors ? (
                 <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
+                  {field.state.meta.errors[0]?.message}
                 </StatusMessage>
               ) : null}
             </div>
