@@ -8,7 +8,6 @@ import { StatusMessage } from '@budget-tracker/ui/components/ui/statusMessage'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { useForm } from '@tanstack/react-form'
 import { useMutation } from '@tanstack/react-query'
-import type { ZodValidator } from '@tanstack/zod-form-adapter'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { InternalLink } from '~/web/config/app'
@@ -18,10 +17,8 @@ import { signUp } from '../actions'
 const signUpSchema = z.object({
   email: z.string().email('Invalid email'),
   password: z.string().min(8, 'Password must be at least 8 characters'),
-  name: z.string().optional()
+  name: z.string()
 })
-
-type Form = z.infer<typeof signUpSchema>
 
 export const SignUpForm = () => {
   const { replace } = useRouter()
@@ -42,7 +39,7 @@ export const SignUpForm = () => {
     }
   })
 
-  const form = useForm<Form, ZodValidator>({
+  const form = useForm({
     defaultValues: {
       email: '',
       password: '',
@@ -93,7 +90,7 @@ export const SignUpForm = () => {
             />
             {field.state.meta.errors ? (
               <StatusMessage variant="error">
-                {field.state.meta.errors[0]}
+                {field.state.meta.errors[0]?.message}
               </StatusMessage>
             ) : null}
           </div>
@@ -116,7 +113,7 @@ export const SignUpForm = () => {
             />
             {field.state.meta.errors ? (
               <StatusMessage variant="error">
-                {field.state.meta.errors[0]}
+                {field.state.meta.errors[0]?.message}
               </StatusMessage>
             ) : null}
           </div>
@@ -139,7 +136,7 @@ export const SignUpForm = () => {
             />
             {field.state.meta.errors ? (
               <StatusMessage variant="error">
-                {field.state.meta.errors[0]}
+                {field.state.meta.errors[0]?.message}
               </StatusMessage>
             ) : null}
           </div>

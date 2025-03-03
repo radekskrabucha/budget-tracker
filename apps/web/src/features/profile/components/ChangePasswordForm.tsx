@@ -8,7 +8,6 @@ import { StatusMessage } from '@budget-tracker/ui/components/ui/statusMessage'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { useForm } from '@tanstack/react-form'
 import { useMutation } from '@tanstack/react-query'
-import type { ZodValidator } from '@tanstack/zod-form-adapter'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { InternalLink } from '~/web/config/app'
@@ -37,8 +36,6 @@ const changePasswordSchema = z
     path: ['confirmNewPassword']
   })
 
-export type Form = z.infer<typeof changePasswordSchema>
-
 export const ChangePasswordForm = () => {
   const router = useRouter()
   const { toast } = useToast()
@@ -64,7 +61,7 @@ export const ChangePasswordForm = () => {
     }
   })
 
-  const form = useForm<Form, ZodValidator>({
+  const form = useForm({
     defaultValues: {
       currentPassword: '',
       newPassword: '',
@@ -108,7 +105,7 @@ export const ChangePasswordForm = () => {
               />
               {field.state.meta.errors ? (
                 <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
+                  {field.state.meta.errors[0]?.message}
                 </StatusMessage>
               ) : null}
             </div>
@@ -130,7 +127,7 @@ export const ChangePasswordForm = () => {
               />
               {field.state.meta.errors ? (
                 <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
+                  {field.state.meta.errors[0]?.message}
                 </StatusMessage>
               ) : null}
             </div>
@@ -152,7 +149,7 @@ export const ChangePasswordForm = () => {
               />
               {field.state.meta.errors ? (
                 <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
+                  {field.state.meta.errors[0]?.message}
                 </StatusMessage>
               ) : null}
             </div>

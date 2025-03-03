@@ -13,7 +13,6 @@ import { Textarea } from '@budget-tracker/ui/components/ui/textarea'
 import { useToast } from '@budget-tracker/ui/hooks/use-toast'
 import { useForm } from '@tanstack/react-form'
 import { useMutation } from '@tanstack/react-query'
-import type { ZodValidator } from '@tanstack/zod-form-adapter'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { InternalLink } from '~/web/config/app'
@@ -25,7 +24,7 @@ const addNewCategoryFormSchema = z.object({
   type: z.enum(['income', 'expense'])
 })
 
-type Form = z.infer<typeof addNewCategoryFormSchema>
+type CategoryType = z.infer<typeof addNewCategoryFormSchema>['type']
 
 export const AddNewCategoryForm = () => {
   const router = useRouter()
@@ -51,11 +50,11 @@ export const AddNewCategoryForm = () => {
     }
   })
 
-  const form = useForm<Form, ZodValidator>({
+  const form = useForm({
     defaultValues: {
       name: '',
       description: '',
-      type: 'expense'
+      type: 'expense' as CategoryType
     },
     validators: {
       onSubmit: addNewCategoryFormSchema
@@ -111,7 +110,7 @@ export const AddNewCategoryForm = () => {
               </RadioGroup>
               {field.state.meta.errors ? (
                 <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
+                  {field.state.meta.errors[0]?.message}
                 </StatusMessage>
               ) : null}
             </div>
@@ -134,7 +133,7 @@ export const AddNewCategoryForm = () => {
               />
               {field.state.meta.errors ? (
                 <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
+                  {field.state.meta.errors[0]?.message}
                 </StatusMessage>
               ) : null}
             </div>
@@ -155,7 +154,7 @@ export const AddNewCategoryForm = () => {
               />
               {field.state.meta.errors ? (
                 <StatusMessage variant="error">
-                  {field.state.meta.errors[0]}
+                  {field.state.meta.errors[0]?.message}
                 </StatusMessage>
               ) : null}
             </div>
