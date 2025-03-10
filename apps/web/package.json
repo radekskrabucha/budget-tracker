@@ -15,8 +15,8 @@
     "@budget-tracker/api": "workspace:*",
     "@budget-tracker/ui": "workspace:*",
     "@budget-tracker/utils": "workspace:*",
-    "@tanstack/react-form": "1.0.0",
-    "@tanstack/react-query": "5.67.1",
+    "@tanstack/react-form": "1.0.5",
+    "@tanstack/react-query": "5.67.2",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
@@ -24,7 +24,7 @@
     "@t3-oss/env-nextjs": "0.12.0",
     "@types/react-dom": "19.0.4",
     "babel-plugin-react-compiler": "19.0.0-beta-e1e972c-20250221",
-    "eslint-config-next": "15.2.0",
+    "eslint-config-next": "15.2.1",
     "postcss": "8.5.3"
   }
 }
