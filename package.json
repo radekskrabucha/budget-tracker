@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@10.6.3",
   "engines": {
     "node": "=22"
   },
@@ -18,18 +18,19 @@
     "test": "turbo test"
   },
   "dependencies": {
-    "better-auth": "1.2.3",
+    "better-auth": "1.2.4",
     "class-variance-authority": "0.7.1",
     "date-fns": "4.1.0",
-    "lucide-react": "0.479.0",
-    "next": "15.2.1",
+    "lucide-react": "0.482.0",
+    "next": "15.2.2",
     "react": "19.0.0",
     "recharts": "2.15.1",
     "tailwind-merge": "3.0.2",
     "zod": "3.24.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "4.0.12",
+    "@eslint/js": "9.22.0",
+    "@tailwindcss/postcss": "4.0.14",
     "@total-typescript/tsconfig": "1.0.4",
     "@trivago/prettier-plugin-sort-imports": "5.2.2",
     "@types/node": "22.13.10",
@@ -39,12 +40,12 @@
     "globals": "16.0.0",
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "0.6.11",
-    "tailwindcss": "4.0.12",
+    "tailwindcss": "4.0.14",
     "tailwindcss-animate": "1.0.7",
     "tsc-alias": "1.8.11",
     "turbo": "2.4.4",
     "typescript": "5.8.2",
-    "typescript-eslint": "8.26.0",
-    "vitest": "3.0.8"
+    "typescript-eslint": "8.26.1",
+    "vitest": "3.0.9"
   }
 }
