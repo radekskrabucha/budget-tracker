@@ -98,10 +98,10 @@ importers:
         version: link:../../packages/utils
       '@hono/node-server':
         specifier: 1.13.8
-        version: 1.13.8(hono@4.7.4)
+        version: 1.13.8(hono@4.7.5)
       '@hono/zod-validator':
         specifier: 0.4.3
-        version: 0.4.3(hono@4.7.4)(zod@3.24.2)
+        version: 0.4.3(hono@4.7.5)(zod@3.24.2)
       '@neondatabase/serverless':
         specifier: 0.10.4
         version: 0.10.4
@@ -115,11 +115,11 @@ importers:
         specifier: 0.7.0
         version: 0.7.0(drizzle-orm@0.40.0(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(gel@2.0.0)(kysely@0.27.6))(zod@3.24.2)
       hono:
-        specifier: 4.7.4
-        version: 4.7.4
+        specifier: 4.7.5
+        version: 4.7.5
       hono-pino:
         specifier: 0.8.0
-        version: 0.8.0(hono@4.7.4)(pino@9.6.0)
+        version: 0.8.0(hono@4.7.5)(pino@9.6.0)
       pino:
         specifier: 9.6.0
         version: 9.6.0
@@ -2780,8 +2780,8 @@ packages:
       hono: '>=4.0.0'
       pino: '>=7.1.0'
 
-  hono@4.7.4:
-    resolution: {integrity: sha512-Pst8FuGqz3L7tFF+u9Pu70eI0xa5S3LPUmrNd5Jm8nTHze9FxLTK9Kaj5g/k4UcwuJSXTP65SyHOPLrffpcAJg==}
+  hono@4.7.5:
+    resolution: {integrity: sha512-fDOK5W2C1vZACsgLONigdZTRZxuBqFtcKh7bUQ5cVSbwI2RWjloJDcgFOVzbQrlI6pCmhlTsVYZ7zpLj4m4qMQ==}
     engines: {node: '>=16.9.0'}
 
   ignore@5.3.2:
@@ -4439,13 +4439,13 @@ snapshots:
 
   '@hexagon/base64@1.1.28': {}
 
-  '@hono/node-server@1.13.8(hono@4.7.4)':
+  '@hono/node-server@1.13.8(hono@4.7.5)':
     dependencies:
-      hono: 4.7.4
+      hono: 4.7.5
 
-  '@hono/zod-validator@0.4.3(hono@4.7.4)(zod@3.24.2)':
+  '@hono/zod-validator@0.4.3(hono@4.7.5)(zod@3.24.2)':
     dependencies:
-      hono: 4.7.4
+      hono: 4.7.5
       zod: 3.24.2
 
   '@humanfs/core@0.19.1': {}
@@ -6439,13 +6439,13 @@ snapshots:
 
   help-me@5.0.0: {}
 
-  hono-pino@0.8.0(hono@4.7.4)(pino@9.6.0):
+  hono-pino@0.8.0(hono@4.7.5)(pino@9.6.0):
     dependencies:
       defu: 6.1.4
-      hono: 4.7.4
+      hono: 4.7.5
       pino: 9.6.0
 
-  hono@4.7.4: {}
+  hono@4.7.5: {}
 
   ignore@5.3.2: {}
 
