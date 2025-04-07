@@ -149,8 +149,8 @@ importers:
         specifier: 1.2.3
         version: 1.2.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2)
       '@tanstack/react-query':
-        specifier: 5.71.1
-        version: 5.71.1(react@19.1.0)
+        specifier: 5.71.10
+        version: 5.71.10(react@19.1.0)
       react-dom:
         specifier: 19.1.0
         version: 19.1.0(react@19.1.0)
@@ -1619,8 +1619,8 @@ packages:
   '@tanstack/form-core@1.2.3':
     resolution: {integrity: sha512-1QWUO4gbqsinlymie5J5y+h5FH1llBmqkfcAVKzWenqNQ2k3PTV5uwaDajIfXpKkGggRFUyLQklJHDlMRu2Lvw==}
 
-  '@tanstack/query-core@5.71.1':
-    resolution: {integrity: sha512-4+ZswCHOfJX+ikhXNoocamTUmJcHtB+Ljjz/oJkC7/eKB5IrzEwR4vEwZUENiPi+wISucJHR5TUbuuJ26w3kdQ==}
+  '@tanstack/query-core@5.71.10':
+    resolution: {integrity: sha512-/fKEY8fO1nbszfrBatzmhJa1nEwIKn0c6Tv2A1ocSA5OiD2GukOIV8nnBbvJRgZb/VIoBy9/N4PVbABI8YQLow==}
 
   '@tanstack/react-form@1.2.3':
     resolution: {integrity: sha512-pWugV/N5PD40k9i9jx9PBTjhM3XaoaSoakE+QiE6zmmgUgoJd6q+5fYyBSNn09EJy2w3b0pIe1Mmy4kS4hdpbA==}
@@ -1634,8 +1634,8 @@ packages:
       vinxi:
         optional: true
 
-  '@tanstack/react-query@5.71.1':
-    resolution: {integrity: sha512-6BTkaSIGT58MroI4kIGXNdx/NhirXPU+75AJObLq+WBa39WmoxhzSk0YX+hqWJ/bvqZJFxslbEU4qIHaRZq+8Q==}
+  '@tanstack/react-query@5.71.10':
+    resolution: {integrity: sha512-mQYM/ObpL8YMDz8vCoUuHkbe8Yu7NnVRH8aBaBa/3zlufjp1f1VuWjeO3TcumNHfuVMDwEAGinsgwrB7OKADiQ==}
     peerDependencies:
       react: ^18 || ^19
 
@@ -5109,7 +5109,7 @@ snapshots:
     dependencies:
       '@tanstack/store': 0.7.0
 
-  '@tanstack/query-core@5.71.1': {}
+  '@tanstack/query-core@5.71.10': {}
 
   '@tanstack/react-form@1.2.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2)':
     dependencies:
@@ -5122,9 +5122,9 @@ snapshots:
       - react-dom
       - typescript
 
-  '@tanstack/react-query@5.71.1(react@19.1.0)':
+  '@tanstack/react-query@5.71.10(react@19.1.0)':
     dependencies:
-      '@tanstack/query-core': 5.71.1
+      '@tanstack/query-core': 5.71.10
       react: 19.1.0
 
   '@tanstack/react-store@0.7.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
